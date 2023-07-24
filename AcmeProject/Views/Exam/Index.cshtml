@@ -1,0 +1,35 @@
+﻿@using Acme.Core.Entity;
+@model List<Exam>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Sınavlar</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Sınav Soruları</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Name</td>              
+                <td><a class="btn btn-dark" asp-controller="Question" asp-action="Index" asp-route-id="@item.ID">Sorular</a> </td>
+                <td> <a class="btn btn-warning" asp-controller="Exam" asp-action="ExamUpdate" asp-route-id="@item.ID">Güncelle</a> </td>
+                <td> <a class="btn btn-danger" asp-controller="Exam" asp-action="ExamRemove" asp-route-id="@item.ID">Sil</a> </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" style="color:white;" asp-controller="Exam" asp-action="ExamInsert">Sınav Ekle</a>
+

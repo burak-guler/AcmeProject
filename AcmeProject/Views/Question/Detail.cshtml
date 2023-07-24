@@ -1,0 +1,43 @@
+﻿@using Acme.Core.Model;
+@model IndexModel
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Soru Detayı</h3>
+<table class="table table-hover">
+    <thead>
+        <tr>            
+            <th>Soru No</th>
+            <th>Soru</th>
+            <th>Cevap</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.QuestionData)
+        {
+            <tr>
+                <td>@item.Number</td>
+                <td>@item.QuestionContent</td>
+                <td><strong> @ViewBag.TrueID</strong></td>
+
+                <table class="table table-striped">
+                    <tbody>
+                        @foreach (var item1 in Model.ValueData)
+                        {
+                        <td><strong>@item1.Name)</strong> @item1.QuestionValueContent</td>
+                        }
+                    </tbody>
+                </table>
+            </tr>
+            <tr>
+                <a class="btn btn-warning">Güncelle</a>
+                <a class="btn btn-danger">Sil</a>
+            </tr>
+        }   
+    </tbody>
+</table>
+
+

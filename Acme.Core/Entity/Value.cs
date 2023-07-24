@@ -11,7 +11,7 @@ namespace Acme.Core.Entity
     {
         [Key]
         public int ID { get; set; }
-        public char Name { get; set; }
+        public string Name { get; set; }
         public string QuestionValueContent { get; set; }
     }
 }

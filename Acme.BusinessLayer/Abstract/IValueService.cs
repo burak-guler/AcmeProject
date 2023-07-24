@@ -14,5 +14,7 @@ namespace Acme.BusinessLayer.Abstract
         Value GetByID(int id);
         void ValueDelete(Value value);
         void ValueUpdate(Value value);
+        List<Value> GetValue(int id);
+        List<Value> GetOnAllQuestionExam(int id);
     }
 }

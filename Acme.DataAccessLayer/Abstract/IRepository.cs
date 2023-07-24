@@ -13,7 +13,7 @@ namespace Acme.DataAccessLayer.Abstract
 
         void Insert(T P);
 
-        T Get(Expression<Func<T, bool>> filter);
+        T Get(int id);
 
         void Delete(T P);
 

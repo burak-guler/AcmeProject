@@ -10,9 +10,11 @@ namespace Acme.BusinessLayer.Abstract
     public interface IQuestionService
     {
         List<Question> GetList();
+        List<Question> GetQuestion(int id);
         void QuestionAdd(Question question);
         Question GetByID(int id);
         void QuestionDelete(Question question);
         void QuestionUpdate(Question question);
+        List<Question> GetOnAllQuestionExam(int id);
     }
 }

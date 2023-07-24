@@ -11,36 +11,41 @@ namespace Acme.BusinessLayer.Concrete
 {
     public class UserService : IUserService
     {
-        private IUserDal _userDal;
+        private IUserRepository _userDal;
 
-        public UserService(IUserDal userDal)
+        public UserService(IUserRepository userDal)
         {
             _userDal = userDal;
         }
 
         public User GetByID(int id)
         {
-            throw new NotImplementedException();
+           return _userDal.Get(id);  
         }
 
         public List<User> GetList()
         {
-            throw new NotImplementedException();
+            return _userDal.List(); 
+        }
+
+        public User GetUser(User user)
+        {
+            return _userDal.LoginList(user);
         }
 
         public void UserAdd(User user)
         {
-            throw new NotImplementedException();
+           _userDal.Insert(user);   
         }
 
         public void UserDelete(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Delete(user);
         }
 
         public void UserUpdate(User user)
         {
-            throw new NotImplementedException();
+            _userDal.Update(user);
         }
     }
 }

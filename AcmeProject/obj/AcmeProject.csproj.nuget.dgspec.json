@@ -4,6 +4,198 @@
     "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\AcmeProject.csproj": {}
   },
   "projects": {
+    "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.BusinessLayer\\Acme.BusinessLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.BusinessLayer\\Acme.BusinessLayer.csproj",
+        "projectName": "Acme.BusinessLayer",
+        "projectPath": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.BusinessLayer\\Acme.BusinessLayer.csproj",
+        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.BusinessLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.Core\\Acme.Core.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.Core\\Acme.Core.csproj"
+              },
+              "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.DataAccessLayer\\Acme.DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.DataAccessLayer\\Acme.DataAccessLayer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.Core\\Acme.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.Core\\Acme.Core.csproj",
+        "projectName": "Acme.Core",
+        "projectPath": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.Core\\Acme.Core.csproj",
+        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.DataAccessLayer\\Acme.DataAccessLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.DataAccessLayer\\Acme.DataAccessLayer.csproj",
+        "projectName": "Acme.DataAccessLayer",
+        "projectPath": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.DataAccessLayer\\Acme.DataAccessLayer.csproj",
+        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.DataAccessLayer\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.Core\\Acme.Core.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.Core\\Acme.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.1.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\AcmeProject.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -28,7 +220,17 @@
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.BusinessLayer\\Acme.BusinessLayer.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.BusinessLayer\\Acme.BusinessLayer.csproj"
+              },
+              "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.Core\\Acme.Core.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.Core\\Acme.Core.csproj"
+              },
+              "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.DataAccessLayer\\Acme.DataAccessLayer.csproj": {
+                "projectPath": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\Acme.DataAccessLayer\\Acme.DataAccessLayer.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -40,6 +242,12 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.15, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

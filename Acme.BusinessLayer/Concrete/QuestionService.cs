@@ -11,36 +11,46 @@ namespace Acme.BusinessLayer.Concrete
 {
     public class QuestionService : IQuestionService
     {
-        private IQuestionDal _questionDal;
+        private IQuestionRepository _questionDal;
 
-        public QuestionService(IQuestionDal questionDal)
+        public QuestionService(IQuestionRepository questionDal)
         {
             _questionDal = questionDal;
         }
 
         public Question GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _questionDal.Get(id);
         }
 
         public List<Question> GetList()
         {
-            throw new NotImplementedException();
+            return _questionDal.List();
+        }
+
+        public List<Question> GetOnAllQuestionExam(int id)
+        {
+            return _questionDal.GetOnAllQuestionExam(id);
+        }
+
+        public List<Question> GetQuestion(int id)
+        {
+            return _questionDal.GetQuestionList(id);
         }
 
         public void QuestionAdd(Question question)
         {
-            throw new NotImplementedException();
+             _questionDal.Insert(question);
         }
 
         public void QuestionDelete(Question question)
         {
-            throw new NotImplementedException();
+            _questionDal.Delete(question);
         }
 
         public void QuestionUpdate(Question question)
         {
-            throw new NotImplementedException();
+           _questionDal.Update(question);
         }
     }
 }

@@ -1,0 +1,12 @@
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.Core\bin\Debug\net6.0\Acme.Core.deps.json
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.Core\bin\Debug\net6.0\Acme.Core.dll
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.Core\bin\Debug\net6.0\Acme.Core.pdb
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.Core\obj\Debug\net6.0\Acme.Core.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.Core\obj\Debug\net6.0\Acme.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.Core\obj\Debug\net6.0\Acme.Core.AssemblyInfoInputs.cache
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.Core\obj\Debug\net6.0\Acme.Core.AssemblyInfo.cs
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.Core\obj\Debug\net6.0\Acme.Core.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.Core\obj\Debug\net6.0\Acme.Core.dll
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.Core\obj\Debug\net6.0\refint\Acme.Core.dll
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.Core\obj\Debug\net6.0\Acme.Core.pdb
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.Core\obj\Debug\net6.0\ref\Acme.Core.dll

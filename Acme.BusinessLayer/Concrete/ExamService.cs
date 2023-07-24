@@ -11,36 +11,36 @@ namespace Acme.BusinessLayer.Concrete
 {
     public class ExamService : IExamService
     {
-        private IExamDal _examDal;
+        private IExamRepository _examDal;
 
-        public ExamService(IExamDal examDal)
+        public ExamService(IExamRepository examDal)
         {
             _examDal = examDal;
         }
 
         public void ExamAdd(Exam exam)
         {
-            throw new NotImplementedException();
+            _examDal.Insert(exam);  
         }
 
         public void ExamDelete(Exam exam)
         {
-            throw new NotImplementedException();
+            _examDal.Delete(exam);
         }
 
         public void ExamUpdate(Exam exam)
         {
-            throw new NotImplementedException();
+            _examDal.Update(exam);
         }
 
         public Exam GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _examDal.Get(id);
         }
 
         public List<Exam> GetList()
         {
-            throw new NotImplementedException();
+            return _examDal.List();
         }
     }
 }

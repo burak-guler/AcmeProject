@@ -1,6 +1,8 @@
 ﻿using Acme.DataAccessLayer.Abstract;
+using Acme.DataAccessLayer.DbConnection;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -10,24 +12,19 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
 {
     public class GenericRepository<T> : IRepository<T> where T : class 
     {
-        //private IExamDal ExamDal;
-
-        //public GenericRepository(IExamDal examDal) 
-        //{ 
-        //    ExamDal = examDal;
-        //}
-
-        //public void ConnectDB()
-        //{
-        //    ExamDal.
-        //}
+        public SqlConnection DbConnect()
+        {
+            SqlConnection conn = new SqlConnection("Server=localhost;uid=BURAK\\LENOVO;pwd=252525;Database=AcmeDb;Trusted_Connection=True;");
+            conn.Open();
+            return conn;
+        }
 
         public void Delete(T P)
         {
             throw new NotImplementedException();
         }
-
-        public T Get(Expression<Func<T, bool>> filter)
+		//Func<T, bool>> filter
+		public T Get(int id)
         {
             throw new NotImplementedException();
         }

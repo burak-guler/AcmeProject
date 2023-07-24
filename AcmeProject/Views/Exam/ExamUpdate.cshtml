@@ -1,0 +1,19 @@
+﻿@using Acme.Core.Entity;
+@model Exam
+@{
+    ViewData["Title"] = "ExamUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Sınav Güncelle</h3>
+
+<div class="form-group">
+    <form class="form-group" method="post">
+        <input class="form-control" style="display:none;" name="ID" value="@Model.ID" />
+        <label>Sınav Adı</label>
+        <input class="form-control" name="Name" value="@Model.Name" style="width:30%;" />
+        <br />
+        <button class="btn btn-warning">Güncelle</button>
+    </form>
+</div>
+

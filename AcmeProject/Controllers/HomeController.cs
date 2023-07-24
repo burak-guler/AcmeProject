@@ -1,4 +1,7 @@
-﻿using AcmeProject.Models;
+﻿using Acme.BusinessLayer.Abstract;
+using Acme.BusinessLayer.Concrete;
+using Acme.Core.Entity;
+using AcmeProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,15 +9,23 @@ namespace AcmeProject.Controllers
 {
     public class HomeController : Controller
     {
+        
+        
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private IExamService _examService;
+
+        public HomeController(ILogger<HomeController> logger,IExamService examService)
         {
+            this._examService = examService;   
             _logger = logger;
         }
 
         public IActionResult Index()
         {
+            //Exam exam = new Exam();
+            //exam.Name = "Matematik";
+            //_examService.ExamAdd(exam);
             return View();
         }
 

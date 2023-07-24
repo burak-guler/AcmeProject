@@ -14,5 +14,6 @@ namespace Acme.BusinessLayer.Abstract
         User GetByID(int id);
         void UserDelete(User user);
         void UserUpdate(User user);
+        User GetUser(User user);
     }
 }

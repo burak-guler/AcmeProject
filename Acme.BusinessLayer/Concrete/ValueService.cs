@@ -11,36 +11,46 @@ namespace Acme.BusinessLayer.Concrete
 {
     public class ValueService : IValueService
     {
-        private IValueDal _valueDal;
+        private IValueRepository _valueDal;
 
-        public ValueService(IValueDal valueDal)
+        public ValueService(IValueRepository valueDal)
         {
             _valueDal = valueDal;
         }
 
         public Value GetByID(int id)
         {
-            throw new NotImplementedException();
+            return _valueDal.Get(id);
         }
 
         public List<Value> GetList()
         {
-            throw new NotImplementedException();
+            return _valueDal.List();    
+        }
+
+        public List<Value> GetOnAllQuestionExam(int id)
+        {
+           return _valueDal.GetOnAllQuestionValue(id);
+        }
+
+        public List<Value> GetValue(int id)
+        {
+            return _valueDal.GetValueList(id);
         }
 
         public void ValueAdd(Value value)
         {
-            throw new NotImplementedException();
+            _valueDal.Insert(value);
         }
 
         public void ValueDelete(Value value)
         {
-            throw new NotImplementedException();
+            _valueDal.Delete(value);
         }
 
         public void ValueUpdate(Value value)
         {
-            throw new NotImplementedException();
+            _valueDal.Update(value);
         }
     }
 }

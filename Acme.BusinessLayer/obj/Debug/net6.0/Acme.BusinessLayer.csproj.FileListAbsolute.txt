@@ -1,0 +1,17 @@
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\bin\Debug\net6.0\Acme.BusinessLayer.deps.json
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\bin\Debug\net6.0\Acme.BusinessLayer.dll
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\bin\Debug\net6.0\Acme.BusinessLayer.pdb
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\bin\Debug\net6.0\Acme.Core.dll
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\bin\Debug\net6.0\Acme.DataAccessLayer.dll
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\bin\Debug\net6.0\Acme.Core.pdb
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\bin\Debug\net6.0\Acme.DataAccessLayer.pdb
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\obj\Debug\net6.0\Acme.BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\obj\Debug\net6.0\Acme.BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\obj\Debug\net6.0\Acme.BusinessLayer.AssemblyInfoInputs.cache
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\obj\Debug\net6.0\Acme.BusinessLayer.AssemblyInfo.cs
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\obj\Debug\net6.0\Acme.BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\obj\Debug\net6.0\Acme.BusinessLayer.csproj.CopyComplete
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\obj\Debug\net6.0\Acme.BusinessLayer.dll
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\obj\Debug\net6.0\refint\Acme.BusinessLayer.dll
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\obj\Debug\net6.0\Acme.BusinessLayer.pdb
+C:\Users\LENOVO\Desktop\AcmeProje\AcmeProject\Acme.BusinessLayer\obj\Debug\net6.0\ref\Acme.BusinessLayer.dll

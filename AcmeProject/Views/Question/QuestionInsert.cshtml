@@ -1,0 +1,140 @@
+﻿@using Acme.Core.Model
+@model IndexModel
+@{
+    ViewData["Title"] = "QuestionInsert";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Soru Ekleme</h2>
+
+@*@using (Html.BeginForm("QuestionInsert", "Question", FormMethod.Post))
+{
+    @Html.Label("Soru No")
+    @Html.TextBoxFor(m => m.Question.Number,new { @class = "Form-Control", style = "width:30%;" })
+    @Html.Label("Soru")
+    @Html.TextAreaFor(m => m.Question.QuestionContent,new { @class = "Form-Control", style = "width:30%; height:100px;" })
+    @Html.Label("Doğru Cevap")
+    @Html.TextBoxFor(m => m.Question.TrueValueID,new { @class = "Form-Control", style = "width:30%;" })
+
+    <hr />
+    
+        <table class="table table-hover" style="background-color:dimgrey" >
+
+             @for (int i = 0; i < 4; i++)
+              {
+                    <td>
+                        @Html.Label("Şık Adı")
+                        @Html.TextBoxFor(m => m.ValueData[i].Name,new { @class = "Form-Control", style = "width:30%;" })
+                        @Html.Label("Şık Cevabı")
+                        @Html.TextAreaFor(m => m.ValueData[i].QuestionValueContent,new { @class = "Form-Control", style = "width:70%; height:100px;" })
+                    </td>
+              }
+        </table>
+     
+   
+    <button class="btn btn-primary">Kaydet</button>
+}*@
+
+<form method="post" asp-action="QuestionInsert" asp-controller="Question">
+
+    @Html.Label("Soru No")
+    @Html.TextBoxFor(m => m.Question.Number,new { @class = "Form-Control", style = "width:30%;" })
+    @Html.Label("Soru")
+    @Html.TextAreaFor(m => m.Question.QuestionContent,new { @class = "Form-Control", style = "width:30%; height:100px;" })
+    @Html.Label("Doğru Cevap")
+    @Html.TextBoxFor(m => m.Question.TrueValueID,new { @class = "Form-Control", style = "width:30%;" })
+
+    <hr />
+
+    <table class="table table-hover" style="background-color:dimgrey">
+
+        @for (int i = 0; i < 4; i++)
+        {
+            <td>
+                @Html.Label("Şık Adı")
+                @Html.TextBoxFor(m => m.ValueData[i].Name,new { @class = "Form-Control", style = "width:30%;" })
+                @Html.Label("Şık Cevabı")
+                @Html.TextAreaFor(m => m.ValueData[i].QuestionValueContent,new { @class = "Form-Control", style = "width:70%; height:100px;" })
+            </td>
+        }
+    </table>
+
+
+    <button class="btn btn-primary">Kaydet</button>
+</form>
+
+@*<form method="post" asp-action="QuestionInsert" asp-controller="Question">
+    <label>Soru No</label>
+    <input name="@Model.Question.Number" />
+    <label>Soru</label>
+    <input name="@Model.Question.QuestionContent" />
+    <label>Cevap</label>
+    <input name="@Model.Question.TrueValueID" />
+
+    <table class="table table-hover" style="background-color:dimgrey">
+
+        @for (int i = 0; i < 4; i++)
+        {
+            <td>
+                @Html.Label("Şık Adı")
+                @Html.TextBoxFor(m => m.ValueData[i].Name,new { @class = "Form-Control", style = "width:30%;" })
+                @Html.Label("Şık Cevabı")
+                @Html.TextAreaFor(m => m.ValueData[i].QuestionValueContent,new { @class = "Form-Control", style = "width:70%; height:100px;" })
+            </td>
+        }
+    </table>
+
+
+</form>*@
+
+@*<form asp-action="QuestionInsert" method="post">
+    <div class="form-group">
+        <label asp-for="Question.Number">Soru No</label>
+        <input asp-for="Question.Number" class="form-control" style="width:30%;"/>
+    </div>
+    <div class="form-group">
+        <label asp-for="Question.QuestionContent">Soru</label>
+        <textarea asp-for="Question.QuestionContent" class="form-control" style="width:30%;"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="Question.TrueValueID">Doğru Cevap</label>
+        <input asp-for="Question.TrueValueID" class="form-control" style="width:30%;" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Value.Name">Şık</label>
+        <input asp-for="Value.Name" class="form-control" style="width:30%;" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Value.QuestionValueContent">Şık Cevap</label>
+        <textarea asp-for="Value.QuestionValueContent" class="form-control" style="width:30%;"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="Value.Name">Şık</label>
+        <input asp-for="Value.Name" class="form-control" style="width:30%;" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Value.QuestionValueContent">Şık Cevap</label>
+        <textarea asp-for="Value.QuestionValueContent" class="form-control" style="width:30%;"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="Value.Name">Şık</label>
+        <input asp-for="Value.Name" class="form-control" style="width:30%;" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Value.QuestionValueContent">Şık Cevap</label>
+        <textarea asp-for="Value.QuestionValueContent" class="form-control" style="width:30%;"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="Value.Name">Şık</label>
+        <input asp-for="Value.Name" class="form-control" style="width:30%;" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Value.QuestionValueContent">Şık Cevap</label>
+        <textarea asp-for="Value.QuestionValueContent" class="form-control" style="width:30%;"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Kaydet</button>
+</form>*@
+
+
