@@ -19,9 +19,19 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
         {
 
         }
-        public void Delete(QuestionExam P)
+        public int Delete(int id)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                string query = "DELETE FROM QuestionExam WHERE ExamID = @ExamID";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ExamID", id);
+
+                return command.ExecuteNonQuery();
+            }
         }
 
         public QuestionExam Get(int id)
@@ -51,9 +61,19 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             return questionExam.SingleOrDefault();
         }
 
-        public void Insert(QuestionExam P)
+        public int Insert(QuestionExam P)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "INSERT INTO QuestionExam (QuestionID,ExamID) VALUES (@QuestionID,@ExamID); SELECT CAST(scope_identity() AS int)";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@QuestionID", P.QuestionID);
+                cmd.Parameters.AddWithValue("@ExamID", P.ExamID);
+                connection.Open();
+                var result = cmd.ExecuteScalar();
+                return (result == null) ? -1 : (int)result;
+
+            }
         }
 
         public List<QuestionExam> List()
@@ -66,7 +86,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             throw new NotImplementedException();
         }
 
-        public void Update(QuestionExam P)
+        public int Update(QuestionExam P)
         {
             throw new NotImplementedException();
         }

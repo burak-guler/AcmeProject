@@ -19,15 +19,15 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
            
         }
 
-        public void Delete(User P)
+        public int Delete(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "DELETE FROM User WHERE ID = @ID";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@ID", P.ID);
+                command.Parameters.AddWithValue("@ID", id);
                 connection.Open();
-                command.ExecuteNonQuery();
+                return command.ExecuteNonQuery();
             }
         }
 
@@ -36,7 +36,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             throw new NotImplementedException();
         }
 
-        public void Insert(User P)
+        public int Insert(User P)
         {
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -49,7 +49,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
                 command.Parameters.AddWithValue("@UserMail", P.UserMail);
                 command.Parameters.AddWithValue("@UserPassword", P.UserPassword);				
 				//command.Parameters.AddWithValue("@AdminLogin", P.AdminLogin);                
-				command.ExecuteNonQuery();
+				return command.ExecuteNonQuery();
             }
         }
 
@@ -126,7 +126,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             return users.SingleOrDefault();
         }
 
-        public void Update(User P)
+        public int Update(User P)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -138,7 +138,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
                 command.Parameters.AddWithValue("@UserPassword", P.UserPassword);
                 command.Parameters.AddWithValue("@UserMail", P.UserMail);
                 connection.Open();
-                command.ExecuteNonQuery();
+                return command.ExecuteNonQuery();
             }
         }
     }

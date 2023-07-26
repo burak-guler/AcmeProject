@@ -10,10 +10,10 @@ namespace Acme.BusinessLayer.Abstract
     public interface IUserService
     {
         List<User> GetList();
-        void UserAdd(User user);
+        int UserAdd(User user);
         User GetByID(int id);
-        void UserDelete(User user);
-        void UserUpdate(User user);
+        int UserDelete(int id);
+        int UserUpdate(User user);
         User GetUser(User user);
     }
 }

@@ -38,19 +38,19 @@ namespace Acme.BusinessLayer.Concrete
             return _valueDal.GetValueList(id);
         }
 
-        public void ValueAdd(Value value)
+        public int ValueAdd(Value value)
         {
-            _valueDal.Insert(value);
+            return _valueDal.Insert(value);
         }
 
-        public void ValueDelete(Value value)
+        public int ValueDelete(int id)
         {
-            _valueDal.Delete(value);
+            return _valueDal.Delete(id);
         }
 
-        public void ValueUpdate(Value value)
+        public int ValueUpdate(Value value)
         {
-            _valueDal.Update(value);
+            return _valueDal.Update(value);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             return conn;
         }
 
-        public void Delete(T P)
+        public int Delete(int id)
         {
             throw new NotImplementedException();
         }
@@ -29,7 +29,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             throw new NotImplementedException();
         }
 
-        public void Insert(T P)
+        public int Insert(T P)
         {
             throw new NotImplementedException();
         }
@@ -44,7 +44,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             throw new NotImplementedException();
         }
 
-        public void Update(T P)
+        public int Update(T P)
         {
             throw new NotImplementedException();
         }

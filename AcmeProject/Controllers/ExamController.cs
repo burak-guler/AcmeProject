@@ -1,4 +1,5 @@
 ﻿using Acme.BusinessLayer.Abstract;
+using Acme.BusinessLayer.Concrete;
 using Acme.Core.Entity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,9 +8,13 @@ namespace AcmeProject.Controllers
     public class ExamController : Controller
     {
         private IExamService _examService;
-        public ExamController(IExamService examService)
+        private IUserExamService _userExamService;
+        private IQuestionExamService _questionExamService;
+        public ExamController(IExamService examService, IUserExamService userExamService, IQuestionExamService questionExamService)
         {
            this._examService = examService;
+            this._userExamService = userExamService;
+            this._questionExamService = questionExamService;    
         }
         public IActionResult Index()
         {
@@ -43,9 +48,28 @@ namespace AcmeProject.Controllers
            return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public IActionResult ExamRemove(int id)
         {
-            _examService.ExamDelete(_examService.GetByID(id));  
+            var examvalues = _examService.GetByID(id);
+            return View(examvalues);
+        }
+
+        [HttpPost]
+        public IActionResult ExamRemove(Exam exam)
+        {
+            try
+            {
+                 
+                int issuccessExam = _examService.ExamDelete(exam.ID);
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
             return RedirectToAction("Index");
         }
     }

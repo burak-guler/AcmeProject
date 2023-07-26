@@ -18,19 +18,19 @@ namespace Acme.BusinessLayer.Concrete
             _examDal = examDal;
         }
 
-        public void ExamAdd(Exam exam)
+        public int ExamAdd(Exam exam)
         {
-            _examDal.Insert(exam);  
+           return _examDal.Insert(exam);  
         }
 
-        public void ExamDelete(Exam exam)
+        public int ExamDelete(int id)
         {
-            _examDal.Delete(exam);
+           return _examDal.Delete(id);
         }
 
-        public void ExamUpdate(Exam exam)
+        public int ExamUpdate(Exam exam)
         {
-            _examDal.Update(exam);
+           return _examDal.Update(exam);
         }
 
         public Exam GetByID(int id)

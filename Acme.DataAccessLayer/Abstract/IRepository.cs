@@ -11,13 +11,13 @@ namespace Acme.DataAccessLayer.Abstract
     {
         List<T> List();
 
-        void Insert(T P);
+        int Insert(T P);
 
         T Get(int id);
 
-        void Delete(T P);
+        int Delete(int id);
 
-        void Update(T P);
+        int Update(T P);
 
         List<T> List(Expression<Func<T, bool>> filter);
     }

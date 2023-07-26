@@ -1,7 +1,9 @@
 ﻿using Acme.BusinessLayer.Abstract;
 using Acme.Core.Entity;
 using Acme.Core.Model;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using System.Collections.Generic;
 
 namespace AcmeProject.Controllers
@@ -11,81 +13,155 @@ namespace AcmeProject.Controllers
         private IQuestionService _questionService;
         private IQuestionExamService _questionExamService;
         private IQuestionValueService _questionValueService;
-        private IValueService _valueService;    
+        private IValueService _valueService;  
+        private IHttpContextAccessor _httpContextAccessor;
+        private IUserExamService _userExamService;
 
-        public QuestionController(IQuestionService questionService, IQuestionExamService questionExamService,IQuestionValueService questionValueService,IValueService valueService)
+        public QuestionController(IQuestionService questionService, IQuestionExamService questionExamService,IQuestionValueService questionValueService,IValueService valueService, IHttpContextAccessor httpContextAccessor,IUserExamService userExamService)
         {
             this._questionService = questionService;
             this._questionExamService = questionExamService;
             this._questionValueService = questionValueService;
             this._valueService = valueService;
+            this._httpContextAccessor = httpContextAccessor;
+            this._userExamService = userExamService;
         }
 
         public IActionResult Index(int id)
         {
-            TempData["ExamID"] = id;
+            _httpContextAccessor.HttpContext.Session.SetInt32("ExamID", id);
 
-           var question= _questionService.GetOnAllQuestionExam(id);
+            var question = _questionService.GetOnAllQuestionExam(id);
             return View(question);
-
-            //var questionExamvalues = _questionExamService.GetByID(id);
-            //if (questionExamvalues == null)
-            //{
-
-            //    return NotFound("Bu sınav herhangi bir soru ile eşleşemedi");
-            //}
-            //var question = _questionService.GetQuestion(questionExamvalues.QuestionID);
-
-            //if (question == null)
-            //{
-
-            //    return NotFound("Bu sınava ait soru bulunamadı.");
-            //}
-            //return View(question);
         }
 
         [HttpGet]
-        public IActionResult QuestionInsert() 
+        public IActionResult QuestionInsert(int id) 
         {
+            
             IndexModel model = new IndexModel();
-
-            for (int i = 0; i < 4; i++)
+            
+            if (id > 0)
             {
-                model.ValueData.Add(new Value());
+                var question= _questionService.GetByID(id);
+                model.Question = question;
+
+                var value = _valueService.GetOnAllQuestionExam(id);
+                foreach (var item in value)
+                {
+                    model.ValueData.Add(item);
+                    if (item.ID==question.TrueValueID)
+                    {
+                        model.SelectedTrueValue = item.Name;
+                    }
+                }
             }
+            else
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    model.ValueData.Add(new Value());
+                }
+            }
+            
 
             return View(model);
         }
         [HttpPost]
-        public IActionResult QuestionInsert(IndexModel Model) 
+        public IActionResult QuestionInsert(IndexModel model, int id) 
         {
-           
-            
-                // Soru eklemek için
-                _questionService.QuestionAdd(Model.Question);
+            int? examID = _httpContextAccessor.HttpContext.Session.GetInt32("ExamID");
 
-                // Şık eklemek için
-                //var values = Model.ValueData;
+            List<int> valueIdList = new List<int>();
 
-                for (int i = 0; i < Model.ValueData.Count; i++)
+            try
+            {
+
+                int questionId = 0;
+                if (id > 0) 
                 {
-                    _valueService.ValueAdd(Model.ValueData[i]);
-                }
 
-                //foreach (var value in Model.ValueData)
-                //{
-                //    _valueService.ValueAdd(value);
-                //}            
+                    var values = _valueService.GetOnAllQuestionExam(id);
 
-                return RedirectToAction("Index");
-            
+                    //Value tablosuna insert ve update işlemi
+                    for (int i = 0; i < model.ValueData.Count; i++)
+                    {                                       
+                            int valueId = _valueService.ValueUpdate(model.ValueData[i]);
+                            if (valueId <= 0)
+                                return View();
+                            
 
-             
+                            if (model.ValueData[i].Name.Equals(model.SelectedTrueValue))
+                            {
+                                model.Question.TrueValueID = values.Where(w => w.Name.Equals(model.ValueData[i].Name)).FirstOrDefault().ID;
+                            }                        
+                    }
+                    model.Question.ID = id;
+                    questionId = _questionService.QuestionUpdate(model.Question);
+                    if (questionId <= 0)
+                        return View();
+                }            
+                else
+                {
+                   
+
+
+                    for (int i = 0; i < model.ValueData.Count; i++)
+                    {                       
+                            int valueId = _valueService.ValueAdd(model.ValueData[i]);
+                            if (valueId <= 0)
+                                return View();
+                            valueIdList.Add(valueId);
+
+                            if (model.ValueData[i].Name.Equals(model.SelectedTrueValue))
+                            {
+                                model.Question.TrueValueID = valueId;
+                            }                       
+                       
+                    }
+
+                    questionId = _questionService.QuestionAdd(model.Question);
+                    if (questionId <= 0)
+                        return View();
+
+                    //QuestionValue tablosuna insert  işlemi
+                    foreach (var valueId in valueIdList)
+                    {
+                        var isSuccess = _questionValueService.QuestionValueAdd(new QuestionValue()
+                        {
+                            QuestionID = questionId,
+                            ValueID = valueId
+                        });
+
+                        if (isSuccess <= 0)
+                            return View();
+                    }
+
+                    //QuestionExam tablosuna insert işlemi
+                    var isSuccessQuestionExam = _questionExamService.QuestionExamAdd(new QuestionExam()
+                    {
+                        QuestionID = questionId,
+                        ExamID = examID ?? 0
+                    });
+
+                    if (isSuccessQuestionExam <= 0)
+                        return View();
+
+                }               
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            return RedirectToAction("Index", new { id = examID });
         }
     
 
         public IActionResult Detail(int id)
         {
+            _httpContextAccessor.HttpContext.Session.SetInt32("QuestionID", id);
 
             IndexModel indexModel = new IndexModel();
 
@@ -105,34 +181,36 @@ namespace AcmeProject.Controllers
                         ViewBag.TrueID = item.Name.ToString();
                     }
                 }
-                    
-                
             }
-
-            //var questionvalue = _questionValueService.GetQuestionValue(id);
-            //List<int> QuestionvalueID = new List<int>();
-            //foreach (var value in questionvalue)
-            //{
-            //    QuestionvalueID.Add(value.ValueID);
-            //}
-
-
-            //foreach (var item in QuestionvalueID)
-            //{
-            //    var values = _valueService.GetValue(item);
-            //    foreach (var val in values)
-            //    {
-            //            indexModel.ValueData.Add(val);
-            //            if (question.TrueValueID==val.ID)
-            //            {
-            //            ViewBag.TrueID = val.Name.ToString();
-            //            }
-            //    }
-
-
-            //}
             return View(indexModel);
         }
+
+        [HttpGet]
+        public IActionResult QuestionDelete()
+        {
+            int? questionID = _httpContextAccessor.HttpContext.Session.GetInt32("QuestionID");
+            int? examID = _httpContextAccessor.HttpContext.Session.GetInt32("ExamID");
+            _questionService.QuestionDelete((int)questionID);
+            
+            return RedirectToAction("Index", new {id= examID });
+        }
+
+        //[HttpPost]
+        //public IActionResult QuestionDelete(int id)
+        //{
+        //    int? examID = _httpContextAccessor.HttpContext.Session.GetInt32("ExamID");
+
+        //    try
+        //    {
+        //        _questionService.QuestionDelete(id);
+                      
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw;
+        //    }
+        //    return RedirectToAction("Index", new { id = examID });
+        //}
 
 
 

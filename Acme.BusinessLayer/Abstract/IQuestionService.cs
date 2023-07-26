@@ -11,10 +11,10 @@ namespace Acme.BusinessLayer.Abstract
     {
         List<Question> GetList();
         List<Question> GetQuestion(int id);
-        void QuestionAdd(Question question);
+        int QuestionAdd(Question question);
         Question GetByID(int id);
-        void QuestionDelete(Question question);
-        void QuestionUpdate(Question question);
+        int QuestionDelete(int id);
+        int QuestionUpdate(Question question);
         List<Question> GetOnAllQuestionExam(int id);
     }
 }

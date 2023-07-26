@@ -19,15 +19,15 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
 
         }
 
-        public void Delete(Value P)
+        public int Delete(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 string query = "DELETE FROM Exam WHERE ID = @ID";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@ID", P.ID);
+                command.Parameters.AddWithValue("@ID", id);
                 connection.Open();
-                command.ExecuteNonQuery();
+                return command.ExecuteNonQuery();
             }
         }
 
@@ -43,7 +43,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             {
                 connection.Open();
 
-                string query = "SELECT * FROM Value v INNER JOIN QuestionValue qv ON v.ID = qv.QuestionID                             WHERE qv.QuestionID = @QuestionID";
+                string query = "SELECT * FROM Value v INNER JOIN QuestionValue qv ON v.ID = qv.ValueID WHERE qv.QuestionID = @QuestionID";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@QuestionID", id);
@@ -91,16 +91,18 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             return valu;
         }
 
-        public void Insert(Value P)
+        public int Insert(Value P)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO Value (Name,QuestionValueContent) VALUES (@Name,@QuestionValueContent)";
+                string query = "INSERT INTO Value (Name,QuestionValueContent) VALUES (@Name,@QuestionValueContent); SELECT CAST(scope_identity() AS int)";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@Name", P.Name);
                 cmd.Parameters.AddWithValue("@QuestionValueContent", P.QuestionValueContent);
                 connection.Open();
-                cmd.ExecuteNonQuery();
+                var result = cmd.ExecuteScalar();
+
+                return (result == null) ? -1 : (int)result;
 
             }
         }
@@ -134,7 +136,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             throw new NotImplementedException();
         }
 
-        public void Update(Value P)
+        public int Update(Value P)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -144,7 +146,9 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
                 command.Parameters.AddWithValue("@QuestionValueContent", P.QuestionValueContent);
                 command.Parameters.AddWithValue("@Name", P.Name);
                 connection.Open();
-                command.ExecuteNonQuery();
+                return command.ExecuteNonQuery();
+
+                
             }
         }
     }

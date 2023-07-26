@@ -20,16 +20,78 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
            
         }
 
-        public void Delete(Exam P)
+        public int Delete(int id)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "DELETE FROM Exam WHERE ID = @ID";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@ID", P.ID);
                 connection.Open();
-                command.ExecuteNonQuery();
+
+                // 4. UserQuestionValue tablosundan sınav ile ilişkili QuestionValueID'ye ait verileri silin
+                string deleteUserQuestionValueQuery = "DELETE FROM UserQuestionValue WHERE QuestionValueID IN (SELECT ID FROM QuestionValue WHERE QuestionID IN (SELECT QuestionID FROM QuestionExam WHERE ExamID = @ExamID))";
+                using (SqlCommand deleteUserQuestionValueCommand = new SqlCommand(deleteUserQuestionValueQuery, connection))
+                {
+                    deleteUserQuestionValueCommand.Parameters.AddWithValue("@ExamID", id);
+                    deleteUserQuestionValueCommand.ExecuteNonQuery();
+                }
+
+                
+                //6
+                string deleteValueQuery = "DELETE FROM Value WHERE ID IN (SELECT ValueID FROM QuestionValue WHERE QuestionID IN (SELECT QuestionID FROM QuestionExam WHERE ExamID = @ExamID))";
+                using (SqlCommand deleteValueCommand = new SqlCommand(deleteValueQuery, connection))
+                {
+                    deleteValueCommand.Parameters.AddWithValue("@ExamID", id);
+                    deleteValueCommand.ExecuteNonQuery();
+                }
+
+                // 3. QuestionValue tablosundan sınav ile ilişkili sorulara ait şıkları (value değerleri) silin
+                string deleteQuestionValueQuery = "DELETE FROM QuestionValue WHERE QuestionID IN (SELECT QuestionID FROM QuestionExam WHERE ExamID = @ExamID)";
+                using (SqlCommand deleteQuestionValueCommand = new SqlCommand(deleteQuestionValueQuery, connection))
+                {
+                    deleteQuestionValueCommand.Parameters.AddWithValue("@ExamID", id);
+                    deleteQuestionValueCommand.ExecuteNonQuery();
+                }
+
+                ///2
+                string deleteUserExamQuery = "DELETE FROM UserExam WHERE ExamID = @ExamID";
+                using (SqlCommand deleteUserExamCommand = new SqlCommand(deleteUserExamQuery, connection))
+                {
+                    deleteUserExamCommand.Parameters.AddWithValue("@ExamID", id);
+                    deleteUserExamCommand.ExecuteNonQuery();
+                }
+
+                // 5. Question tablosundan sınav ile ilişkili soruları silin
+                string deleteQuestionQuery = "DELETE FROM Question WHERE ID IN (SELECT QuestionID FROM QuestionExam WHERE ExamID = @ExamID)";
+                using (SqlCommand deleteQuestionCommand = new SqlCommand(deleteQuestionQuery, connection))
+                {
+                    deleteQuestionCommand.Parameters.AddWithValue("@ExamID", id);
+                    deleteQuestionCommand.ExecuteNonQuery();
+                }
+
+                // 1. QuestionExam tablosundan sınav ile ilişkili soru verilerini silme
+                string deleteQuestionExamQuery = "DELETE FROM QuestionExam WHERE ExamID = @ExamID";
+                using (SqlCommand deleteQuestionExamCommand = new SqlCommand(deleteQuestionExamQuery, connection))
+                {
+                    deleteQuestionExamCommand.Parameters.AddWithValue("@ExamID", id);
+                    deleteQuestionExamCommand.ExecuteNonQuery();
+                }
+
+                // 7. Exam tablosundan sınavı silin
+                string deleteExamQuery = "DELETE FROM Exam WHERE ID = @ExamID";
+                using (SqlCommand deleteExamCommand = new SqlCommand(deleteExamQuery, connection))
+                {
+                    deleteExamCommand.Parameters.AddWithValue("@ExamID", id);
+                    return deleteExamCommand.ExecuteNonQuery();
+                }
             }
+
+            //using (SqlConnection connection = new SqlConnection(connectionString))
+            //{
+            //    string query = "DELETE FROM Exam WHERE ID = @ID";
+            //    SqlCommand command = new SqlCommand(query, connection);
+            //    command.Parameters.AddWithValue("@ID", id);
+            //    connection.Open();
+            //    return command.ExecuteNonQuery();
+            //}
         }
 
         public Exam Get(int id)
@@ -57,7 +119,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             return exam.SingleOrDefault();
         }
 
-        public void Insert(Exam P)
+        public int Insert(Exam P)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -65,7 +127,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Name", P.Name);
                 connection.Open();
-                command.ExecuteNonQuery();
+                return command.ExecuteNonQuery();
             }
         }
 
@@ -100,7 +162,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             throw new NotImplementedException();
         }
 
-        public void Update(Exam P)
+        public int Update(Exam P)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -109,7 +171,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
                 command.Parameters.AddWithValue("@ID", P.ID);
                 command.Parameters.AddWithValue("@Name", P.Name);
                 connection.Open();
-                command.ExecuteNonQuery();
+                return command.ExecuteNonQuery();
             }
         }
     }

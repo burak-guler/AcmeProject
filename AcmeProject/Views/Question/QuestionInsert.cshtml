@@ -35,14 +35,15 @@
     <button class="btn btn-primary">Kaydet</button>
 }*@
 
-<form method="post" asp-action="QuestionInsert" asp-controller="Question">
+<form method="post" asp-action="QuestionInsert" asp-route-id="@(Model.Question?.ID ?? 0)" asp-controller="Question">
 
+    @Html.HiddenFor(m=>m.Question.ID)
     @Html.Label("Soru No")
     @Html.TextBoxFor(m => m.Question.Number,new { @class = "Form-Control", style = "width:30%;" })
     @Html.Label("Soru")
     @Html.TextAreaFor(m => m.Question.QuestionContent,new { @class = "Form-Control", style = "width:30%; height:100px;" })
     @Html.Label("Doğru Cevap")
-    @Html.TextBoxFor(m => m.Question.TrueValueID,new { @class = "Form-Control", style = "width:30%;" })
+    @Html.TextBoxFor(m => m.SelectedTrueValue,new { @class = "Form-Control", style = "width:30%;" })
 
     <hr />
 
@@ -51,6 +52,7 @@
         @for (int i = 0; i < 4; i++)
         {
             <td>
+                @Html.HiddenFor(m=>m.ValueData[i].ID)
                 @Html.Label("Şık Adı")
                 @Html.TextBoxFor(m => m.ValueData[i].Name,new { @class = "Form-Control", style = "width:30%;" })
                 @Html.Label("Şık Cevabı")

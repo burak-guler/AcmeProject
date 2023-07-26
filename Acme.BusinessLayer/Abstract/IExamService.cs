@@ -10,9 +10,9 @@ namespace Acme.BusinessLayer.Abstract
     public interface IExamService
     {
         List<Exam> GetList();
-        void ExamAdd(Exam exam);
+        int ExamAdd(Exam exam);
         Exam GetByID(int id);
-        void ExamDelete(Exam exam);
-        void ExamUpdate(Exam exam);
+        int ExamDelete(int id);
+        int ExamUpdate(Exam exam);
     }
 }

@@ -33,19 +33,19 @@ namespace Acme.BusinessLayer.Concrete
             return _userDal.LoginList(user);
         }
 
-        public void UserAdd(User user)
+        public int UserAdd(User user)
         {
-           _userDal.Insert(user);   
+          return _userDal.Insert(user);   
         }
 
-        public void UserDelete(User user)
+        public int UserDelete(int id)
         {
-            _userDal.Delete(user);
+            return _userDal.Delete(id);
         }
 
-        public void UserUpdate(User user)
+        public int UserUpdate(User user)
         {
-            _userDal.Update(user);
+            return _userDal.Update(user);
         }
     }
 }

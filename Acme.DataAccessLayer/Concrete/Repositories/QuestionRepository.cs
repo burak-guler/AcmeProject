@@ -20,15 +20,52 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
            
         }
 
-        public void Delete(Question P)
+        public int Delete(int id)
         {
+
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "DELETE FROM Question WHERE ID = @ID";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@ID", P.ID);
                 connection.Open();
-                command.ExecuteNonQuery();
+
+                string updateQuery = "UPDATE Question SET TrueValueID = NULL WHERE ID = @QuestionID";
+                SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
+                updateCommand.Parameters.AddWithValue("@QuestionID", id);
+                updateCommand.ExecuteNonQuery();
+
+                
+
+                string selectValueIDsQuery = "SELECT ValueID FROM QuestionValue WHERE QuestionID = @QuestionID";
+                SqlCommand selectValueIDsCommand = new SqlCommand(selectValueIDsQuery, connection);
+                selectValueIDsCommand.Parameters.AddWithValue("@QuestionID", id);
+                List<int> valueIDs = new List<int>();
+                using (SqlDataReader reader = selectValueIDsCommand.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int valueID = Convert.ToInt32(reader["ValueID"]);
+                        valueIDs.Add(valueID);
+                    }
+                }
+
+                // QuestionValue tablosundan ilgili kayıtları sil
+                string deleteQuestionValueQuery = "DELETE FROM QuestionValue WHERE QuestionID = @QuestionID";
+                SqlCommand deleteQuestionValueCommand = new SqlCommand(deleteQuestionValueQuery, connection);
+                deleteQuestionValueCommand.Parameters.AddWithValue("@QuestionID", id);
+                deleteQuestionValueCommand.ExecuteNonQuery();
+
+                // Value tablosundan ilgili kayıtları sil
+                string deleteValueQuery = "DELETE FROM Value WHERE ID IN (" + string.Join(",", valueIDs) + ")";
+                SqlCommand deleteValueCommand = new SqlCommand(deleteValueQuery, connection);
+                //deleteValueCommand.Parameters.AddWithValue("@QuestionID", valueIDs);
+                deleteValueCommand.ExecuteNonQuery();
+
+
+                string query = "DELETE FROM UserQuestionValue WHERE QuestionValueID IN (SELECT ID FROM QuestionValue WHERE QuestionID = @QuestionID);" +
+                   "DELETE FROM QuestionExam WHERE QuestionID = @QuestionID;" +
+                   "DELETE FROM Question WHERE ID = @QuestionID;";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@QuestionID", id);
+                return command.ExecuteNonQuery();
             }
         }
 
@@ -69,7 +106,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             {
                 connection.Open();
 
-                string query = "SELECT q.ID,q.Number,q.TrueValueID,q.QuestionContent FROM Question q INNER JOIN QuestionExam qe ON q.ID = qe.QuestionID                             WHERE qe.ExamID = @ExamID";
+                string query = "SELECT q.ID,q.Number,q.TrueValueID,q.QuestionContent FROM Question q INNER JOIN QuestionExam qe ON q.ID = qe.QuestionID WHERE qe.ExamID = @ExamID";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ExamID", id);
@@ -121,17 +158,20 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             return questioN.ToList();
         }
 
-        public void Insert(Question P)
+        public int Insert(Question P)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO Question (Number,QuestionContent,TrueValueID) VALUES (@Number,@QuestionContent,@TrueValueID)";
+                string query = "INSERT INTO Question (Number,QuestionContent,TrueValueID) VALUES (@Number,@QuestionContent,@TrueValueID); SELECT CAST(scope_identity() AS int)";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Number", P.Number);
                 command.Parameters.AddWithValue("@QuestionContent", P.QuestionContent);
                 command.Parameters.AddWithValue("@TrueValueID", P.TrueValueID);
                 connection.Open();
-                command.ExecuteNonQuery();
+
+                var result = command.ExecuteScalar();
+
+                return (result == null) ? -1 : (int)result;
             }
         }
 
@@ -166,7 +206,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             throw new NotImplementedException();
         }
 
-        public void Update(Question P)
+        public int Update(Question P)
         {
             using (SqlConnection connection=new SqlConnection(connectionString))
             {
@@ -177,7 +217,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
                 command.Parameters.AddWithValue("@QuestionContent", P.QuestionContent);
                 command.Parameters.AddWithValue("@TrueValueID", P.TrueValueID);
                 connection.Open();
-                command.ExecuteNonQuery();
+                return command.ExecuteNonQuery();
             }
         }
     }

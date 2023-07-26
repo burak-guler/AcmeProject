@@ -28,19 +28,19 @@ namespace Acme.BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
-        public void QuestionExamAdd(QuestionExam questionExam)
+        public int QuestionExamAdd(QuestionExam questionExam)
         {
-            throw new NotImplementedException();
+           return _questionExamRepository.Insert(questionExam);
         }
 
-        public void QuestionExamDelete(QuestionExam questionExam)
+        public int QuestionExamDelete(int id)
         {
-            throw new NotImplementedException();
+            return _questionExamRepository.Delete(id);
         }
 
-        public void QuestionExamUpdate(QuestionExam questionExam)
+        public int QuestionExamUpdate(QuestionExam questionExam)
         {
-            throw new NotImplementedException();
+            return _questionExamRepository.Update(questionExam);
         }
     }
 }

@@ -38,19 +38,19 @@ namespace Acme.BusinessLayer.Concrete
             return _questionDal.GetQuestionList(id);
         }
 
-        public void QuestionAdd(Question question)
+        public int QuestionAdd(Question question)
         {
-             _questionDal.Insert(question);
+            return _questionDal.Insert(question);
         }
 
-        public void QuestionDelete(Question question)
+        public int QuestionDelete(int id)
         {
-            _questionDal.Delete(question);
+           return _questionDal.Delete(id);
         }
 
-        public void QuestionUpdate(Question question)
+        public int QuestionUpdate(Question question)
         {
-           _questionDal.Update(question);
+           return _questionDal.Update(question);
         }
     }
 }

@@ -6,6 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddServices();
 builder.Services.AddRepositories();
+builder.Services.AddHttpContextAccessor();
+//session için ekledik
+builder.Services.AddSession();
 
 var app = builder.Build();
 
@@ -21,6 +24,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+//session için ekledik
+app.UseSession();
 
 app.UseAuthorization();
 

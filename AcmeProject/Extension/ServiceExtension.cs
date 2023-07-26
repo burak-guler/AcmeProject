@@ -16,6 +16,7 @@ namespace AcmeProject.Extention
             services.AddScoped<IValueService,ValueService>();   
             services.AddScoped<IValueService,ValueService>();   
             services.AddScoped<IQuestionValueService,QuestionValueService>();   
+            services.AddScoped<IUserExamService,UserExamService>();   
             return services;
         }
 
@@ -27,6 +28,7 @@ namespace AcmeProject.Extention
             services.AddScoped<IValueRepository, ValueRepository>();
             services.AddScoped<IQuestionExamRepository, QuestionExamRepository>();
             services.AddScoped<IQuestionValueRepository, QuestionValueRepository>();
+            services.AddScoped<IUserExamRepository, UserExamRepository>();
             return services;           
         }
     }

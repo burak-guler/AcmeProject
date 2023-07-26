@@ -10,10 +10,10 @@ namespace Acme.BusinessLayer.Abstract
     public interface IValueService
     {
         List<Value> GetList();
-        void ValueAdd(Value value);
+        int ValueAdd(Value value);
         Value GetByID(int id);
-        void ValueDelete(Value value);
-        void ValueUpdate(Value value);
+        int ValueDelete(int id);
+        int ValueUpdate(Value value);
         List<Value> GetValue(int id);
         List<Value> GetOnAllQuestionExam(int id);
     }

@@ -19,7 +19,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
         {
 
         }
-        public void Delete(QuestionValue P)
+        public int Delete(int id)
         {
             throw new NotImplementedException();
         }
@@ -58,9 +58,20 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             return questionV.ToList();
         }
 
-        public void Insert(QuestionValue P)
+        public int Insert(QuestionValue P)
         {
-            throw new NotImplementedException();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "INSERT INTO QuestionValue (QuestionID,ValueID) VALUES (@QuestionID,@ValueID); SELECT CAST(scope_identity() AS int)";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@QuestionID", P.QuestionID);
+                cmd.Parameters.AddWithValue("@ValueID", P.ValueID);
+                connection.Open();
+                var result = cmd.ExecuteScalar();
+
+                return (result == null) ? -1 : (int)result;
+
+            }
         }
 
         public List<QuestionValue> List()
@@ -73,7 +84,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             throw new NotImplementedException();
         }
 
-        public void Update(QuestionValue P)
+        public int Update(QuestionValue P)
         {
             throw new NotImplementedException();
         }

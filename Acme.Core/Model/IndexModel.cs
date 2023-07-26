@@ -21,5 +21,6 @@ namespace Acme.Core.Model
 
         public Question Question { get; set; }
         public Value Value { get; set; }
+        public string SelectedTrueValue { get; set; }
     }
 }
