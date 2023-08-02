@@ -1,4 +1,5 @@
 ﻿using Acme.Core.Entity;
+using Acme.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,12 @@ namespace Acme.BusinessLayer.Abstract
 {
     public interface IUserQuestionValueService
     {
-        List<Exam> GetList();
-        int ExamAdd(Exam exam);
-        Exam GetByID(int id);
-        int ExamDelete(int id);
-        int ExamUpdate(Exam exam);
+        List<UserQuestionValue> GetList();
+        int UserQuestionValueAdd(UserQuestionValue userQuestionValue);
+        UserQuestionValue GetByID(int id);
+        int UserQuestionValueDelete(List<int> questionID);
+        int UserQuestionValueUpdate(UserQuestionValue userQuestionValue);
+        int DeleteUserID(int id);
     }
 }
 

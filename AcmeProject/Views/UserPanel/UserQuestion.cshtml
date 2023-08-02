@@ -1,0 +1,73 @@
+﻿@using Acme.Core.Model
+@model UserQuestionModel
+@{
+    ViewData["Title"] = "UserQuestion";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<br />
+<h3>@ViewBag.ExamName Sınav Soruları</h3>
+<br />
+<form id="questionForm" asp-controller="UserPanel" asp-action="UserAnswer" asp-route-id="@Model.ExamID">
+    @foreach (var question in Model.Questions.Keys)
+    {
+        <p>
+            @question.QuestionContent
+        </p>
+
+        @foreach (var questionValue in Model.Questions[question])
+        {
+            <div class="form-check">
+                <input type="radio" name="questionValueBox_@(question.ID)" value="@($"{questionValue.ID}")" class="form-check-input" required/>
+                <label class="form-check-label">@questionValue.Name-) @questionValue.QuestionValueContent</label>
+            </div> 
+            <br />            
+        }
+    }
+    <button class="btn btn-primary">Kaydet</button>
+</form>
+
+<br />
+@if (Model.TotalCount > Model.PageSize)
+{
+    int totalPages = (int)Math.Ceiling((double)Model.TotalCount / Model.PageSize);
+
+    <div class="pagination">
+        @for (int page = 1; page <= totalPages; page++)
+        {
+            <a class="btn btn-success" style="margin-right:5px;" href="@Url.Action("UserQuestion", new { id = Model.ExamID, pageNumber = page, pageSize = Model.PageSize })" @(page == Model.CurrentPage ? "class=active" : "")>@Convert.ToString(page)</a>
+        }
+    </div>
+}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Sayfanın açıldığı anın zamanı
+    var startTime = new Date().getTime();
+
+    // Form submit olduğunda çalışacak fonksiyon
+    function submitFormWithTime() {
+        // Geçen süreyi hesapla
+        var endTime = new Date().getTime();
+        var elapsedTime = endTime - startTime;
+
+        // Süreyi form verilerine ekleyerek gönder
+        var form = document.getElementById("questionForm");
+        var timeInput = document.createElement("input");
+        timeInput.setAttribute("type", "hidden");
+        timeInput.setAttribute("name", "elapsedTime");
+        timeInput.setAttribute("value", elapsedTime);
+        form.appendChild(timeInput);
+
+        // Formu gönder
+        form.submit();
+    }
+
+    // Form submit işlemi için butonun tıklanma olayını dinle
+    $(document).ready(function () {
+        $(".btn-primary").on("click", function (event) {
+            event.preventDefault(); // Formun normal submitini engelle
+            submitFormWithTime(); // Süre bilgisiyle birlikte formu gönder
+        });
+    });
+</script>
+

@@ -6,10 +6,14 @@ namespace AcmeProject.Controllers
 {
     public class LoginController : Controller
     {
+        private IHttpContextAccessor _httpContextAccessor;
         private IUserService _userService;
-        public LoginController(IUserService userService) 
+        private IControllerLogService _logService;
+        public LoginController(IHttpContextAccessor httpContextAccessor, IUserService userService, IControllerLogService logService) 
         {
-            this._userService = userService;    
+            this._userService = userService;
+            this._httpContextAccessor = httpContextAccessor;
+            this._logService = logService;
         }    
         public IActionResult Index()
         {
@@ -24,16 +28,34 @@ namespace AcmeProject.Controllers
         [HttpPost]
         public IActionResult Login(User user)
         {
-            var users = _userService.GetUser(user);
-            if (users!=null)
+            try
             {
-                return RedirectToAction("Index", "Exam");
-            }
-            else
-            {
-                return View();
-            }
+                var users = _userService.GetUser(user);
 
+                _httpContextAccessor.HttpContext.Session.SetInt32("UserID", users.ID);
+
+                if (users.AdminLogin == true)
+                {
+                    return RedirectToAction("Index", "Exam");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "UserPanel");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                ControllerLog log = new ControllerLog()
+                {
+                    ControllerName = "Login",
+                    Message = ex.Message,
+                    MessageDate = DateTime.Now
+                };
+                _logService.ControllerLogAdd(log);
+
+                throw;
+            }            
 			
         }
 
@@ -41,9 +63,26 @@ namespace AcmeProject.Controllers
         public IActionResult Register() { return View(); }
         [HttpPost]
         public IActionResult Register(User user)
-        {
-            _userService.UserAdd(user);
-            return RedirectToAction("Index");
+        {          
+
+            try
+            {
+                _userService.UserAdd(user);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+
+                ControllerLog log = new ControllerLog()
+                {
+                    ControllerName = "Login-Register",
+                    Message = ex.Message,
+                    MessageDate = DateTime.Now
+                };
+                _logService.ControllerLogAdd(log);
+
+                throw;
+            }
         }
 
     }

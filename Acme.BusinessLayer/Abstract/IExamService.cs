@@ -12,7 +12,8 @@ namespace Acme.BusinessLayer.Abstract
         List<Exam> GetList();
         int ExamAdd(Exam exam);
         Exam GetByID(int id);
-        int ExamDelete(int id);
+        int ExamDelete(List<int> id);
         int ExamUpdate(Exam exam);
+        public List<Exam> GetAllUserExam(int id);
     }
 }

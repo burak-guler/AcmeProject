@@ -2,7 +2,7 @@ using AcmeProject.Extention;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.Services.AddDistributedMemoryCache();
 builder.Services.AddControllersWithViews();
 builder.Services.AddServices();
 builder.Services.AddRepositories();

@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "UserInsert";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Kullanıcı Ekle</h3>
+<br />
+<div>
+    <form class="form-group" method="post">
+        <label>Adı</label>
+        <input name="UserName" class="form-control" style="width:30%;" />
+        <br />
+        <label>Soyad</label>
+        <input name="UserSurname" class="form-control" style="width:30%;" />
+        <br />
+        <label>Mail</label>
+        <input name="UserMail" class="form-control" style="width:30%;" />
+        <br />
+        <label>Şifre</label>
+        <input name="UserPassword" class="form-control" style="width:30%;" />
+        <br />
+        <button class=" btn btn-success">Kullanıcıyı Ekle</button>
+    </form>
+    <a class="btn btn-primary" href="/User/Index" style="float:right;">Geri Dön</a>
+</div>
+

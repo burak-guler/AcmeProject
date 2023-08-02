@@ -33,9 +33,9 @@ namespace Acme.BusinessLayer.Concrete
            return _questionExamRepository.Insert(questionExam);
         }
 
-        public int QuestionExamDelete(int id)
+        public int QuestionExamDelete(List<int> questionID)
         {
-            return _questionExamRepository.Delete(id);
+            return _questionExamRepository.Delete(questionID);
         }
 
         public int QuestionExamUpdate(QuestionExam questionExam)

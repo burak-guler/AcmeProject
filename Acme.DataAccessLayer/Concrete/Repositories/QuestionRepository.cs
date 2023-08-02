@@ -11,70 +11,28 @@ using System.Threading.Tasks;
 
 namespace Acme.DataAccessLayer.Concrete.Repositories
 {
-    public class QuestionRepository : IQuestionRepository
-    {
-        private string connectionString = "Server=localhost;uid=BURAK\\LENOVO;pwd=252525;Database=AcmeDb;Trusted_Connection=True;";
+    public class QuestionRepository : GenericRepository<Question>, IQuestionRepository
+    {       
 
         public QuestionRepository()
         {
            
         }
 
-        public int Delete(int id)
-        {
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                string updateQuery = "UPDATE Question SET TrueValueID = NULL WHERE ID = @QuestionID";
-                SqlCommand updateCommand = new SqlCommand(updateQuery, connection);
-                updateCommand.Parameters.AddWithValue("@QuestionID", id);
-                updateCommand.ExecuteNonQuery();
-
-                
-
-                string selectValueIDsQuery = "SELECT ValueID FROM QuestionValue WHERE QuestionID = @QuestionID";
-                SqlCommand selectValueIDsCommand = new SqlCommand(selectValueIDsQuery, connection);
-                selectValueIDsCommand.Parameters.AddWithValue("@QuestionID", id);
-                List<int> valueIDs = new List<int>();
-                using (SqlDataReader reader = selectValueIDsCommand.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        int valueID = Convert.ToInt32(reader["ValueID"]);
-                        valueIDs.Add(valueID);
-                    }
-                }
-
-                // QuestionValue tablosundan ilgili kayıtları sil
-                string deleteQuestionValueQuery = "DELETE FROM QuestionValue WHERE QuestionID = @QuestionID";
-                SqlCommand deleteQuestionValueCommand = new SqlCommand(deleteQuestionValueQuery, connection);
-                deleteQuestionValueCommand.Parameters.AddWithValue("@QuestionID", id);
-                deleteQuestionValueCommand.ExecuteNonQuery();
-
-                // Value tablosundan ilgili kayıtları sil
-                string deleteValueQuery = "DELETE FROM Value WHERE ID IN (" + string.Join(",", valueIDs) + ")";
-                SqlCommand deleteValueCommand = new SqlCommand(deleteValueQuery, connection);
-                //deleteValueCommand.Parameters.AddWithValue("@QuestionID", valueIDs);
-                deleteValueCommand.ExecuteNonQuery();
-
-
-                string query = "DELETE FROM UserQuestionValue WHERE QuestionValueID IN (SELECT ID FROM QuestionValue WHERE QuestionID = @QuestionID);" +
-                   "DELETE FROM QuestionExam WHERE QuestionID = @QuestionID;" +
-                   "DELETE FROM Question WHERE ID = @QuestionID;";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@QuestionID", id);
-                return command.ExecuteNonQuery();
-            }
+        public int Delete(List<int> questionID)
+        {           
+                var connection = DbConnect();
+                string deleteQuestionQuery = "DELETE FROM Question WHERE ID IN (" + string.Join(",", questionID) + ")";
+                SqlCommand deleteQuestionCommand = new SqlCommand(deleteQuestionQuery, connection);
+                return deleteQuestionCommand.ExecuteNonQuery();               
+                                          
         }
 
         public Question Get(int id)
         {
+            var connection = DbConnect();
             List<Question> questioN = new List<Question>();
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
+           
 
                 string query = "SELECT * FROM [dbo].[Question] WHERE ID = @ID";
 
@@ -95,45 +53,50 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
                     Qex.TrueValueID = TrueValueID;
                     questioN.Add(Qex);
                 }
-            }
+            
             return questioN.SingleOrDefault();
         }
 
-        public List<Question> GetOnAllQuestionExam(int id)
+        public List<Question> GetOnAllQuestionExam(int id, int pageSize, int pageNumber, out int totalCount)
         {
+            var connection = DbConnect();
             List<Question> Que = new List<Question>();
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
 
-                string query = "SELECT q.ID,q.Number,q.TrueValueID,q.QuestionContent FROM Question q INNER JOIN QuestionExam qe ON q.ID = qe.QuestionID WHERE qe.ExamID = @ExamID";
+            totalCount = 0;
+            int offset = (pageNumber - 1) * pageSize;
+
+            string query = "SELECT COUNT(*) OVER() AS TotalCount, q.ID,q.Number,q.TrueValueID,q.QuestionContent FROM Question q INNER JOIN QuestionExam qe ON q.ID = qe.QuestionID WHERE qe.ExamID = @ExamID ORDER BY q.Number ASC OFFSET @Offset ROWS FETCH NEXT @PageSize ROWS ONLY";
 
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ExamID", id);
-                SqlDataReader reader = command.ExecuteReader();
+                command.Parameters.AddWithValue("@Offset", offset);
+                command.Parameters.AddWithValue("@PageSize", pageSize);
+            SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
                     int ID = Convert.ToInt32(reader["ID"]);
                     int Number = Convert.ToInt32(reader["Number"]);
                     int TrueValueID = Convert.ToInt32(reader["TrueValueID"]);
                     string QuestionContent = reader["QuestionContent"].ToString();
-                    Question Qex = new Question();
+                    totalCount = Convert.ToInt32(reader["TotalCount"]);
+
+                Question Qex = new Question();
                     Qex.ID = ID;
                     Qex.Number = Number;
                     Qex.TrueValueID = TrueValueID;
                     Qex.QuestionContent = QuestionContent;
                     Que.Add(Qex);
                 }
-            }
+            
             return Que;
         }
 
         public List<Question> GetQuestionList(int id)
         {
+            var connection = DbConnect();
             List<Question> questioN = new List<Question>();
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
+            
+              
 
                 string query = "SELECT * FROM [dbo].[Question] WHERE ID = @ID";
 
@@ -154,36 +117,34 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
                     Qex.TrueValueID = TrueValueID;
                     questioN.Add(Qex);
                 }
-            }
+            
             return questioN.ToList();
         }
 
         public int Insert(Question P)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
+                var connection = DbConnect();
+            
                 string query = "INSERT INTO Question (Number,QuestionContent,TrueValueID) VALUES (@Number,@QuestionContent,@TrueValueID); SELECT CAST(scope_identity() AS int)";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@Number", P.Number);
                 command.Parameters.AddWithValue("@QuestionContent", P.QuestionContent);
                 command.Parameters.AddWithValue("@TrueValueID", P.TrueValueID);
-                connection.Open();
 
                 var result = command.ExecuteScalar();
 
                 return (result == null) ? -1 : (int)result;
-            }
+            
         }
 
         public List<Question> List()
         {
+            var connection = DbConnect();
             List<Question> question = new List<Question>();
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
+            
                 
                 string query = "Select * From Question";
                 SqlCommand command = new SqlCommand(query, connection);
-                connection.Open();
                 SqlDataReader reader = command.ExecuteReader(); 
                 while (reader.Read())
                 {
@@ -197,7 +158,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
                     que.QuestionContent = QuestionContent;
                     question.Add(que);  
                 }
-            }
+            
             return question.ToList();               
         }
 
@@ -208,17 +169,17 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
 
         public int Update(Question P)
         {
-            using (SqlConnection connection=new SqlConnection(connectionString))
-            {
+            var connection = DbConnect();
+            
                 string query = "UPDATE Question SET Number = @Number, QuestionContent=@QuestionContent,TrueValueID=@TrueValueID  WHERE ID = @ID";
                 SqlCommand command = new SqlCommand(query, connection);
                 command.Parameters.AddWithValue("@ID", P.ID);
                 command.Parameters.AddWithValue("@Number", P.Number);
                 command.Parameters.AddWithValue("@QuestionContent", P.QuestionContent);
-                command.Parameters.AddWithValue("@TrueValueID", P.TrueValueID);
-                connection.Open();
+                
+                command.Parameters.AddWithValue("@TrueValueID", (P.TrueValueID == null) ? DBNull.Value : P.TrueValueID);
                 return command.ExecuteNonQuery();
-            }
+            
         }
     }
 }

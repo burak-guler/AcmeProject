@@ -1,0 +1,28 @@
+﻿@using Acme.Core.Entity
+@model User
+@{
+    ViewData["Title"] = "UserProfile";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<br />
+<h3>Kullanıcı Bilgileri</h3>
+<br />
+<div>
+    <form class="form-group" method="post">
+        <input type="hidden" value="@Model.ID" name="ID" />
+        <label>Ad</label>
+        <input name="UserName" class="form-control" style="width:30%;" value="@Model.UserName" />
+        <br />
+        <label>Soyad</label>
+        <input name="UserSurname" class="form-control" style="width:30%;" value="@Model.UserSurname" />
+        <br />
+        <label>Mail</label>
+        <input name="UserMail" class="form-control" style="width:30%;" value="@Model.UserMail" />
+        <br />
+        <label>Şifre</label>
+        <input name="UserPassword" class="form-control" style="width:30%;" value="@Model.UserPassword" />
+        <br />
+        <button class=" btn btn-warning">Güncelle</button>
+    </form>
+</div>
+

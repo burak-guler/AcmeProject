@@ -10,5 +10,8 @@ namespace Acme.DataAccessLayer.Abstract
     public interface IUserRepository: IRepository<User>
     {
         public User LoginList(User user);
+
+        
+        
     }
 }

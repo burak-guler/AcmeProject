@@ -23,7 +23,7 @@ namespace Acme.BusinessLayer.Concrete
            return _examDal.Insert(exam);  
         }
 
-        public int ExamDelete(int id)
+        public int ExamDelete(List<int> id)
         {
            return _examDal.Delete(id);
         }
@@ -31,6 +31,11 @@ namespace Acme.BusinessLayer.Concrete
         public int ExamUpdate(Exam exam)
         {
            return _examDal.Update(exam);
+        }
+
+        public List<Exam> GetAllUserExam(int id)
+        {
+            return _examDal.GetAllUserExam(id);
         }
 
         public Exam GetByID(int id)

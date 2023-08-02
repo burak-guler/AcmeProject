@@ -9,6 +9,7 @@ namespace Acme.DataAccessLayer.Abstract
 {
     public interface IExamRepository:IRepository<Exam>
     {
+        public List<Exam> GetAllUserExam(int id);
 
     }
 }

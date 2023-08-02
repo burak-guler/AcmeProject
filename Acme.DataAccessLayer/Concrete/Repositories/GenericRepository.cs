@@ -1,5 +1,4 @@
 ﻿using Acme.DataAccessLayer.Abstract;
-using Acme.DataAccessLayer.DbConnection;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -12,6 +11,10 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
 {
     public class GenericRepository<T> : IRepository<T> where T : class 
     {
+        public GenericRepository() 
+        {
+            
+        }  
         public SqlConnection DbConnect()
         {
             SqlConnection conn = new SqlConnection("Server=localhost;uid=BURAK\\LENOVO;pwd=252525;Database=AcmeDb;Trusted_Connection=True;");
@@ -19,7 +22,7 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
             return conn;
         }
 
-        public int Delete(int id)
+        public int Delete(List<int> id)
         {
             throw new NotImplementedException();
         }

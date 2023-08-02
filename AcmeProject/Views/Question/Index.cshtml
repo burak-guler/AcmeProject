@@ -4,13 +4,13 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+<br />
 <h3>Sorular</h3>
-
+<br />
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>ID</th>
+           
             <th>Soru</th>
             <th>Detay</th>
         </tr>
@@ -21,7 +21,7 @@
             foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.ID</td>
+                   
                     <td>@item.QuestionContent</td>
                     <td><a class="btn btn-info" asp-controller="Question" asp-action="Detail" asp-route-id="@item.ID">Detay</a></td>
                    
@@ -33,5 +33,18 @@
 </table>
 
 <a class="btn btn-primary" style="color:white;" asp-controller="Question" asp-action="QuestionInsert">Soru Ekle</a>
-<a class="btn btn-primary" href="/Exam/Index" style="float:right;">Geri Dön</a>
+<a class="btn btn-primary" href="/Exam/Index" >Geri Dön</a>
+
+<br />
+@if (ViewBag.TotalCount > ViewBag.PageSize)
+{
+    int totalPages = (int)Math.Ceiling((double)ViewBag.TotalCount / ViewBag.PageSize);
+
+    <div class="pagination" style="float:right;">
+        @for (int page = 1; page <= totalPages; page++)
+        {
+            <a class="btn btn-success" style="margin-right:5px;" href="@Url.Action("Index", new { id = ViewBag.ExamID, pageNumber = page, pageSize = ViewBag.PageSize })" @(page == ViewBag.CurrentPage ? "class=active" : "")>@Convert.ToString(page)</a>
+        }
+    </div>
+}
 

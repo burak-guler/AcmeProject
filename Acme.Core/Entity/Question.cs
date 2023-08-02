@@ -13,6 +13,6 @@ namespace Acme.Core.Entity
         public int ID { get; set; }
         public int Number { get; set; }
         public string QuestionContent { get; set; }
-        public int TrueValueID { get; set; }
+        public int? TrueValueID { get; set; }
     }
 }

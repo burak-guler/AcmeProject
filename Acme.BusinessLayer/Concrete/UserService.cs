@@ -18,6 +18,8 @@ namespace Acme.BusinessLayer.Concrete
             _userDal = userDal;
         }
 
+        
+
         public User GetByID(int id)
         {
            return _userDal.Get(id);  
@@ -38,7 +40,7 @@ namespace Acme.BusinessLayer.Concrete
           return _userDal.Insert(user);   
         }
 
-        public int UserDelete(int id)
+        public int UserDelete(List<int> id)
         {
             return _userDal.Delete(id);
         }

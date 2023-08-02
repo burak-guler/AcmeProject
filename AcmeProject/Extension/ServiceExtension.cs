@@ -17,6 +17,9 @@ namespace AcmeProject.Extention
             services.AddScoped<IValueService,ValueService>();   
             services.AddScoped<IQuestionValueService,QuestionValueService>();   
             services.AddScoped<IUserExamService,UserExamService>();   
+            services.AddScoped<IUserQuestionValueService,UserQuestionValueService>();   
+            services.AddScoped<IReportService,ReportService>();   
+            services.AddScoped<IControllerLogService, ControllerLogService>();   
             return services;
         }
 
@@ -29,6 +32,9 @@ namespace AcmeProject.Extention
             services.AddScoped<IQuestionExamRepository, QuestionExamRepository>();
             services.AddScoped<IQuestionValueRepository, QuestionValueRepository>();
             services.AddScoped<IUserExamRepository, UserExamRepository>();
+            services.AddScoped<IUserQuestionValueRepository, UserQuestionValueRepository>();
+            services.AddScoped<IReportRepositroy, ReportRepository>();
+            services.AddScoped<IControllerLogRepository, ControllerLogRepository>();
             return services;           
         }
     }

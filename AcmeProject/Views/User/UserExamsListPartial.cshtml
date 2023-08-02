@@ -1,0 +1,19 @@
+﻿
+@using Acme.Core.Entity
+@model List<Acme.Core.Entity.Exam>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Atanan Sınavlar</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (var item in Model)
+            {
+                <td>@item.Name</td>
+            }
+        </tr>
+    </tbody>
+</table>

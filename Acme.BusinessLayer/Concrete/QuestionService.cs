@@ -28,9 +28,10 @@ namespace Acme.BusinessLayer.Concrete
             return _questionDal.List();
         }
 
-        public List<Question> GetOnAllQuestionExam(int id)
+        public List<Question> GetOnAllQuestionExam(int id, int pageSize, int pageNumber, out int totalCount)
         {
-            return _questionDal.GetOnAllQuestionExam(id);
+            totalCount = 0;
+            return _questionDal.GetOnAllQuestionExam(id, pageSize, pageNumber, out totalCount);
         }
 
         public List<Question> GetQuestion(int id)
@@ -43,9 +44,9 @@ namespace Acme.BusinessLayer.Concrete
             return _questionDal.Insert(question);
         }
 
-        public int QuestionDelete(int id)
+        public int QuestionDelete(List<int> questionID)
         {
-           return _questionDal.Delete(id);
+           return _questionDal.Delete(questionID);
         }
 
         public int QuestionUpdate(Question question)

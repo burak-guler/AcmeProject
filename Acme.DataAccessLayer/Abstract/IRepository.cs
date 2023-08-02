@@ -15,7 +15,7 @@ namespace Acme.DataAccessLayer.Abstract
 
         T Get(int id);
 
-        int Delete(int id);
+        int Delete(List<int> id);
 
         int Update(T P);
 

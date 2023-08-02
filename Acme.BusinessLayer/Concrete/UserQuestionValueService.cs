@@ -1,5 +1,6 @@
 ﻿using Acme.BusinessLayer.Abstract;
 using Acme.Core.Entity;
+using Acme.Core.Model;
 using Acme.DataAccessLayer.Abstract;
 using System;
 using System.Collections.Generic;
@@ -17,29 +18,34 @@ namespace Acme.BusinessLayer.Concrete
         {
             _userQuestionValueDal = userQuestionValueDal;
         }
-        public int ExamAdd(Exam exam)
+        public int UserQuestionValueAdd(UserQuestionValue userQuestionValue)
+        {
+            return _userQuestionValueDal.Insert(userQuestionValue);
+        }
+
+        public int UserQuestionValueDelete(List<int> questionID)
+        {
+           return _userQuestionValueDal.Delete(questionID);
+        }
+
+        public int UserQuestionValueUpdate(UserQuestionValue userQuestionValue)
         {
             throw new NotImplementedException();
         }
 
-        public int ExamDelete(int id)
-        {
-           return _userQuestionValueDal.Delete(id);
-        }
-
-        public int ExamUpdate(Exam exam)
+        public UserQuestionValue GetByID(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Exam GetByID(int id)
+        public List<UserQuestionValue> GetList()
         {
             throw new NotImplementedException();
         }
 
-        public List<Exam> GetList()
+        public int DeleteUserID(int id)
         {
-            throw new NotImplementedException();
+            return _userQuestionValueDal.DeleteUserID(id);
         }
     }
 }

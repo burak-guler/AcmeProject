@@ -12,8 +12,9 @@ namespace Acme.BusinessLayer.Abstract
         List<User> GetList();
         int UserAdd(User user);
         User GetByID(int id);
-        int UserDelete(int id);
+        int UserDelete(List<int> id);
         int UserUpdate(User user);
         User GetUser(User user);
+        
     }
 }

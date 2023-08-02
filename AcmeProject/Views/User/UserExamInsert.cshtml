@@ -1,0 +1,40 @@
+﻿@using Acme.Core.Model
+@model UserExamModel
+@{
+    ViewData["Title"] = "UserExamInsert";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h1>Sınav Atama</h1>
+
+<form  method="post">
+    <div class="form-group">
+        <label asp-for="SelectedUserID">Kullanıcı Seç</label>
+        <select asp-for="SelectedUserID" class="form-control" style="width:30%;">
+            <option value="">Seçiniz</option>
+            @foreach (var user in Model.Users)
+            {
+                <option value="@user.ID">@user.UserName</option>
+            }
+        </select>
+        <span asp-validation-for="SelectedUserID" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SelectedExamID">Sınav Seç</label>
+        <select asp-for="SelectedExamID" class="form-control" style="width:30%;">
+            <option value="">Seçiniz</option>
+            @foreach (var exam in Model.Exams)
+            {
+                <option value="@exam.ID">@exam.Name</option>
+            }
+        </select>
+        <span asp-validation-for="SelectedExamID" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Oluştur</button>
+</form>
+
+
+

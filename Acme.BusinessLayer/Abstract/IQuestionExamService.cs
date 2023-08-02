@@ -13,7 +13,7 @@ namespace Acme.BusinessLayer.Abstract
         List<QuestionExam> GetList();
         int QuestionExamAdd(QuestionExam questionExam);
         QuestionExam GetByID(int id);
-        int QuestionExamDelete(int id);
+        int QuestionExamDelete(List<int> questionID);
         int QuestionExamUpdate(QuestionExam questionExam);
     }
 }

@@ -33,14 +33,19 @@ namespace Acme.BusinessLayer.Concrete
             return _questionValueRepository.GetQuestionValueList(id);
         }
 
+        public QuestionValue GetQuestionValue(int questionID, int valueID)
+        {
+            return _questionValueRepository.GetQuestionValue(questionID, valueID); 
+        }
+
         public int QuestionValueAdd(QuestionValue questionValue)
         {
             return _questionValueRepository.Insert(questionValue); 
         }
 
-        public int QuestionValueDelete(int id)
+        public int QuestionValueDelete(List<int> questionID)
         {
-            return _questionValueRepository.Delete(id);
+            return _questionValueRepository.Delete(questionID);
         }
 
         public int QuestionValueUpdate(QuestionValue questionValue)

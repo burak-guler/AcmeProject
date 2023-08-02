@@ -13,8 +13,8 @@ namespace Acme.BusinessLayer.Abstract
         List<Question> GetQuestion(int id);
         int QuestionAdd(Question question);
         Question GetByID(int id);
-        int QuestionDelete(int id);
+        int QuestionDelete(List<int> questionID);
         int QuestionUpdate(Question question);
-        List<Question> GetOnAllQuestionExam(int id);
+        List<Question> GetOnAllQuestionExam(int id, int pageSize, int pageNumber, out int totalCount);
     }
 }

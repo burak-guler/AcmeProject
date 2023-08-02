@@ -5,6 +5,338 @@
       "PackagePath": "staticwebassets\\AcmeProject.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\.browserslistrc",
+      "PackagePath": "staticwebassets\\Web\\.browserslistrc"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\.gitignore",
+      "PackagePath": "staticwebassets\\Web\\.gitignore"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\.travis.yml",
+      "PackagePath": "staticwebassets\\Web\\.travis.yml"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\LICENSE",
+      "PackagePath": "staticwebassets\\Web"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\README.md",
+      "PackagePath": "staticwebassets\\Web\\README.md"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\401.html",
+      "PackagePath": "staticwebassets\\Web\\dist\\401.html"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\404.html",
+      "PackagePath": "staticwebassets\\Web\\dist\\404.html"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\500.html",
+      "PackagePath": "staticwebassets\\Web\\dist\\500.html"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\assets\\demo\\chart-area-demo.js",
+      "PackagePath": "staticwebassets\\Web\\dist\\assets\\demo\\chart-area-demo.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\assets\\demo\\chart-bar-demo.js",
+      "PackagePath": "staticwebassets\\Web\\dist\\assets\\demo\\chart-bar-demo.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\assets\\demo\\chart-pie-demo.js",
+      "PackagePath": "staticwebassets\\Web\\dist\\assets\\demo\\chart-pie-demo.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\assets\\demo\\datatables-demo.js",
+      "PackagePath": "staticwebassets\\Web\\dist\\assets\\demo\\datatables-demo.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\assets\\img\\error-404-monochrome.svg",
+      "PackagePath": "staticwebassets\\Web\\dist\\assets\\img\\error-404-monochrome.svg"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\charts.html",
+      "PackagePath": "staticwebassets\\Web\\dist\\charts.html"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\css\\1.png",
+      "PackagePath": "staticwebassets\\Web\\dist\\css\\1.png"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\css\\styles.css",
+      "PackagePath": "staticwebassets\\Web\\dist\\css\\styles.css"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\index.html",
+      "PackagePath": "staticwebassets\\Web\\dist\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\js\\scripts.js",
+      "PackagePath": "staticwebassets\\Web\\dist\\js\\scripts.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\layout-sidenav-light.html",
+      "PackagePath": "staticwebassets\\Web\\dist\\layout-sidenav-light.html"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\layout-static.html",
+      "PackagePath": "staticwebassets\\Web\\dist\\layout-static.html"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\login.html",
+      "PackagePath": "staticwebassets\\Web\\dist\\login.html"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\password.html",
+      "PackagePath": "staticwebassets\\Web\\dist\\password.html"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\register.html",
+      "PackagePath": "staticwebassets\\Web\\dist\\register.html"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\dist\\tables.html",
+      "PackagePath": "staticwebassets\\Web\\dist\\tables.html"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\index.html",
+      "PackagePath": "staticwebassets\\Web\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\package-lock.json",
+      "PackagePath": "staticwebassets\\Web\\package-lock.json"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\package.json",
+      "PackagePath": "staticwebassets\\Web\\package.json"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\scripts\\build-assets.js",
+      "PackagePath": "staticwebassets\\Web\\scripts\\build-assets.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\scripts\\build-pug.js",
+      "PackagePath": "staticwebassets\\Web\\scripts\\build-pug.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\scripts\\build-scripts.js",
+      "PackagePath": "staticwebassets\\Web\\scripts\\build-scripts.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\scripts\\build-scss.js",
+      "PackagePath": "staticwebassets\\Web\\scripts\\build-scss.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\scripts\\clean.js",
+      "PackagePath": "staticwebassets\\Web\\scripts\\clean.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\scripts\\render-assets.js",
+      "PackagePath": "staticwebassets\\Web\\scripts\\render-assets.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\scripts\\render-pug.js",
+      "PackagePath": "staticwebassets\\Web\\scripts\\render-pug.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\scripts\\render-scripts.js",
+      "PackagePath": "staticwebassets\\Web\\scripts\\render-scripts.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\scripts\\render-scss.js",
+      "PackagePath": "staticwebassets\\Web\\scripts\\render-scss.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\scripts\\sb-watch.js",
+      "PackagePath": "staticwebassets\\Web\\scripts\\sb-watch.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\scripts\\start-debug.js",
+      "PackagePath": "staticwebassets\\Web\\scripts\\start-debug.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\scripts\\start.js",
+      "PackagePath": "staticwebassets\\Web\\scripts\\start.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\assets\\demo\\chart-area-demo.js",
+      "PackagePath": "staticwebassets\\Web\\src\\assets\\demo\\chart-area-demo.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\assets\\demo\\chart-bar-demo.js",
+      "PackagePath": "staticwebassets\\Web\\src\\assets\\demo\\chart-bar-demo.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\assets\\demo\\chart-pie-demo.js",
+      "PackagePath": "staticwebassets\\Web\\src\\assets\\demo\\chart-pie-demo.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\assets\\demo\\datatables-demo.js",
+      "PackagePath": "staticwebassets\\Web\\src\\assets\\demo\\datatables-demo.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\assets\\img\\error-404-monochrome.svg",
+      "PackagePath": "staticwebassets\\Web\\src\\assets\\img\\error-404-monochrome.svg"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\js\\scripts.js",
+      "PackagePath": "staticwebassets\\Web\\src\\js\\scripts.js"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\layouts\\authentication.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\layouts\\authentication.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\layouts\\dashboard.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\layouts\\dashboard.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\layouts\\error.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\layouts\\error.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\layouts\\includes\\footer.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\layouts\\includes\\footer.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\layouts\\includes\\head\\css.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\layouts\\includes\\head\\css.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\layouts\\includes\\head\\icons.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\layouts\\includes\\head\\icons.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\layouts\\includes\\head\\meta.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\layouts\\includes\\head\\meta.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\layouts\\includes\\head\\title.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\layouts\\includes\\head\\title.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\layouts\\includes\\navigation\\sidenav.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\layouts\\includes\\navigation\\sidenav.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\layouts\\includes\\navigation\\topnav.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\layouts\\includes\\navigation\\topnav.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\layouts\\includes\\scripts.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\layouts\\includes\\scripts.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\pages\\401.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\pages\\401.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\pages\\404.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\pages\\404.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\pages\\500.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\pages\\500.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\pages\\charts.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\pages\\charts.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\pages\\includes\\datatable.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\pages\\includes\\datatable.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\pages\\includes\\page-header.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\pages\\includes\\page-header.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\pages\\index.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\pages\\index.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\pages\\layout-sidenav-light.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\pages\\layout-sidenav-light.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\pages\\layout-static.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\pages\\layout-static.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\pages\\login.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\pages\\login.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\pages\\password.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\pages\\password.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\pages\\register.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\pages\\register.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\pug\\pages\\tables.pug",
+      "PackagePath": "staticwebassets\\Web\\src\\pug\\pages\\tables.pug"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\scss\\_global.scss",
+      "PackagePath": "staticwebassets\\Web\\src\\scss\\_global.scss"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\scss\\_variables.scss",
+      "PackagePath": "staticwebassets\\Web\\src\\scss\\_variables.scss"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\scss\\layout\\_authentication.scss",
+      "PackagePath": "staticwebassets\\Web\\src\\scss\\layout\\_authentication.scss"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\scss\\layout\\_dashboard-default.scss",
+      "PackagePath": "staticwebassets\\Web\\src\\scss\\layout\\_dashboard-default.scss"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\scss\\layout\\_dashboard-fixed.scss",
+      "PackagePath": "staticwebassets\\Web\\src\\scss\\layout\\_dashboard-fixed.scss"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\scss\\layout\\_error.scss",
+      "PackagePath": "staticwebassets\\Web\\src\\scss\\layout\\_error.scss"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\scss\\navigation\\_nav.scss",
+      "PackagePath": "staticwebassets\\Web\\src\\scss\\navigation\\_nav.scss"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\scss\\navigation\\_topnav.scss",
+      "PackagePath": "staticwebassets\\Web\\src\\scss\\navigation\\_topnav.scss"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\scss\\navigation\\sidenav\\_sidenav-dark.scss",
+      "PackagePath": "staticwebassets\\Web\\src\\scss\\navigation\\sidenav\\_sidenav-dark.scss"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\scss\\navigation\\sidenav\\_sidenav-light.scss",
+      "PackagePath": "staticwebassets\\Web\\src\\scss\\navigation\\sidenav\\_sidenav-light.scss"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\scss\\navigation\\sidenav\\_sidenav.scss",
+      "PackagePath": "staticwebassets\\Web\\src\\scss\\navigation\\sidenav\\_sidenav.scss"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\scss\\styles.scss",
+      "PackagePath": "staticwebassets\\Web\\src\\scss\\styles.scss"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\scss\\variables\\_navigation.scss",
+      "PackagePath": "staticwebassets\\Web\\src\\scss\\variables\\_navigation.scss"
+    },
+    {
+      "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\Web\\src\\scss\\variables\\_spacing.scss",
+      "PackagePath": "staticwebassets\\Web\\src\\scss\\variables\\_spacing.scss"
+    },
+    {
       "Id": "C:\\Users\\LENOVO\\Desktop\\AcmeProje\\AcmeProject\\AcmeProject\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

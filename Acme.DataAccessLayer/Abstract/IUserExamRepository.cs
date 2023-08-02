@@ -9,5 +9,6 @@ namespace Acme.DataAccessLayer.Abstract
 {
     public interface IUserExamRepository: IRepository<UserExam>
     {
+        int DeleteUserID(int id);
     }
 }

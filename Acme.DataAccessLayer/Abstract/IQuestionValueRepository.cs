@@ -11,5 +11,6 @@ namespace Acme.DataAccessLayer.Abstract
     public interface IQuestionValueRepository: IRepository<QuestionValue>
     {
         List<QuestionValue> GetQuestionValueList(int id);
+        public QuestionValue GetQuestionValue(int questionID, int valueID);
     }
 }

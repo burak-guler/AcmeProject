@@ -1,0 +1,30 @@
+﻿@using Acme.Core.Entity
+@model User
+@{
+    ViewData["Title"] = "UserUpdate";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Kullanıcı Güncelle</h3>
+<br />
+<div>
+    <form class="form-group" method="post">
+        <input type="hidden" value="@Model.ID" name="ID" />
+        <label>Adı</label>
+        <input name="UserName" class="form-control" style="width:30%;" value="@Model.UserName" />
+        <br />
+        <label>Soyad</label>
+        <input name="UserSurname" class="form-control" style="width:30%;" value="@Model.UserSurname" />
+        <br />
+        <label>Mail</label>
+        <input name="UserMail" class="form-control" style="width:30%;" value="@Model.UserMail" />
+        <br />
+        <label>Şifre</label>
+        <input name="UserPassword" class="form-control" style="width:30%;" value="@Model.UserPassword" />
+        <br />
+        <button class=" btn btn-warning">Güncelle</button>
+    </form>
+    <a class="btn btn-primary" href="/User/Index" style="float:right;">Geri Dön</a>
+</div>
+
+

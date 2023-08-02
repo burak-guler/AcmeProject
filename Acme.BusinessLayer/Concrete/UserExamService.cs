@@ -19,6 +19,11 @@ namespace Acme.BusinessLayer.Concrete
             _userExamRepository = userExamRepository;
         }
 
+        public int DeleteUserID(int id)
+        {
+            return _userExamRepository.DeleteUserID(id);
+        }
+
         public Exam GetByID(int id)
         {
             throw new NotImplementedException();
@@ -31,10 +36,10 @@ namespace Acme.BusinessLayer.Concrete
 
         public int UserExamAdd(UserExam userExam)
         {
-            throw new NotImplementedException();
+            return _userExamRepository.Insert(userExam);
         }
 
-        public int UserExamDelete(int id)
+        public int UserExamDelete(List<int> id)
         {
             return _userExamRepository.Delete(id);
         }

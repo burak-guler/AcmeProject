@@ -7,27 +7,36 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Acme.DataAccessLayer.Concrete.Repositories
 {
-    public class UserQuestionValueRepository : IUserQuestionValueRepository
+    public class UserQuestionValueRepository : GenericRepository<UserQuestionValue>, IUserQuestionValueRepository
     {
-        private string connectionString = "Server=localhost;uid=BURAK\\LENOVO;pwd=252525;Database=AcmeDb;Trusted_Connection=True;";
 
         public UserQuestionValueRepository()
         {
 
         }
-        public int Delete(int id)
+        public int Delete(List<int> questionValueID)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                string query = "DELETE FROM UserQuestionValue WHERE QuestionValueID = @QuestionValueID;";
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@QuestionValueID", id);
-                connection.Open();
-                return command.ExecuteNonQuery();
-            }
+            var connection = DbConnect();
+            string query = "DELETE FROM UserQuestionValue WHERE QuestionValueID IN (SELECT ID FROM QuestionValue WHERE QuestionID IN (" + string.Join(",", questionValueID) + "))";
+            SqlCommand command = new SqlCommand(query, connection);            
+         
+            return command.ExecuteNonQuery();
+        }
+
+        public int DeleteUserID(int id)
+        {
+            var connection = DbConnect();
+
+            string query = "DELETE FROM UserQuestionValue WHERE UserID = @UserID";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserID", id);
+
+            return command.ExecuteNonQuery();
         }
 
         public UserQuestionValue Get(int id)
@@ -37,7 +46,12 @@ namespace Acme.DataAccessLayer.Concrete.Repositories
 
         public int Insert(UserQuestionValue P)
         {
-            throw new NotImplementedException();
+            var connection = DbConnect();
+            string query = "INSERT INTO [dbo].[UserQuestionValue] ([UserID],[QuestionValueID])VALUES(@UserID, @QuestionValueID)";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@UserID", P.UserID);
+            command.Parameters.AddWithValue("@QuestionValueID", P.QuestionValueID);              
+            return command.ExecuteNonQuery();
         }
 
         public List<UserQuestionValue> List()

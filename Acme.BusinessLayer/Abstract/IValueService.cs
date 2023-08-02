@@ -12,7 +12,7 @@ namespace Acme.BusinessLayer.Abstract
         List<Value> GetList();
         int ValueAdd(Value value);
         Value GetByID(int id);
-        int ValueDelete(int id);
+        int ValueDelete(List<int> questionID );
         int ValueUpdate(Value value);
         List<Value> GetValue(int id);
         List<Value> GetOnAllQuestionExam(int id);

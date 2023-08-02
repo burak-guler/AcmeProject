@@ -1,0 +1,39 @@
+﻿@using Acme.Core.Entity
+@model List<User>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+    
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Mail</th>
+            <th>Sınav Atama</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+        
+                <td>@item.UserName</td>
+                <td>@item.UserSurname</td>
+                <td>@item.UserMail</td>
+                <td><a class="btn btn-dark" asp-controller="User" asp-action="UserExamInsert" asp-route-id="@item.ID">Sınav Atama</a> </td>
+                <td> <a class="btn btn-warning" asp-controller="User" asp-action="UserUpdate" asp-route-id="@item.ID">Güncelle</a> </td>
+                <td> <a class="btn btn-danger" asp-controller="User" asp-action="UserRemove" asp-route-id="@item.ID">Sil</a> </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" style="color:white;" asp-controller="User" asp-action="UserInsert">Kullanıcı Ekle</a>
+

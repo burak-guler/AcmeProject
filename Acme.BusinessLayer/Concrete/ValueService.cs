@@ -43,9 +43,9 @@ namespace Acme.BusinessLayer.Concrete
             return _valueDal.Insert(value);
         }
 
-        public int ValueDelete(int id)
+        public int ValueDelete(List<int> questionID)
         {
-            return _valueDal.Delete(id);
+            return _valueDal.Delete(questionID);
         }
 
         public int ValueUpdate(Value value)

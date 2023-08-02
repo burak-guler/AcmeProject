@@ -10,17 +10,44 @@ namespace AcmeProject.Controllers
         private IExamService _examService;
         private IUserExamService _userExamService;
         private IQuestionExamService _questionExamService;
-        public ExamController(IExamService examService, IUserExamService userExamService, IQuestionExamService questionExamService)
+        private IUserQuestionValueService _userQuestionValueService;
+        private IQuestionService _questionService;
+        private IValueService _valueService;
+        private IQuestionValueService _questionValueService;
+        private IControllerLogService _logService;
+        public ExamController(IExamService examService, IUserExamService userExamService, IQuestionExamService questionExamService,IUserQuestionValueService userQuestionValueService, IQuestionService questionService,IValueService valueService, IQuestionValueService questionValueService, IControllerLogService logService)
         {
            this._examService = examService;
             this._userExamService = userExamService;
             this._questionExamService = questionExamService;    
+            this._userQuestionValueService = userQuestionValueService;  
+            this._questionService = questionService;
+            this._valueService = valueService;
+            this._questionValueService = questionValueService;
+            this._logService = logService;
         }
         public IActionResult Index()
-        {
-            var Examvalues = _examService.GetList();
+        {           
 
-            return View(Examvalues);
+            try
+            {
+                var Examvalues = _examService.GetList();
+
+                return View(Examvalues);
+            }
+            catch (Exception ex)
+            {
+
+                ControllerLog log = new ControllerLog()
+                {
+                    ControllerName = "Exam",
+                    Message = ex.Message,
+                    MessageDate = DateTime.Now
+                };
+                _logService.ControllerLogAdd(log);
+
+                throw;
+            }
         }
         [HttpGet]
         public IActionResult ExamInsert()
@@ -30,29 +57,97 @@ namespace AcmeProject.Controllers
 
         [HttpPost]
         public IActionResult ExamInsert(Exam exam)
-        {
-            _examService.ExamAdd(exam);
-            return RedirectToAction("Index");  
+        {           
+
+            try
+            {
+                _examService.ExamAdd(exam);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+
+                ControllerLog log = new ControllerLog()
+                {
+                    ControllerName = "Exam",
+                    Message = ex.Message,
+                    MessageDate = DateTime.Now
+                };
+                _logService.ControllerLogAdd(log);
+
+                throw;
+            }
         }
 
         [HttpGet]
         public IActionResult ExamUpdate(int id) 
-        {
-            var Examvalues = _examService.GetByID(id);
-            return View(Examvalues);
+        {           
+
+            try
+            {
+                var Examvalues = _examService.GetByID(id);
+                return View(Examvalues);
+            }
+            catch (Exception ex)
+            {
+
+                ControllerLog log = new ControllerLog()
+                {
+                    ControllerName = "Exam",
+                    Message = ex.Message,
+                    MessageDate = DateTime.Now
+                };
+                _logService.ControllerLogAdd(log);
+
+                throw;
+            }
         }
+
         [HttpPost]
         public IActionResult ExamUpdate(Exam exam) 
-        {
-            _examService.ExamUpdate(exam);
-           return RedirectToAction("Index");
+        {            
+            try
+            {
+                _examService.ExamUpdate(exam);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+
+                ControllerLog log = new ControllerLog()
+                {
+                    ControllerName = "Exam",
+                    Message = ex.Message,
+                    MessageDate = DateTime.Now
+                };
+                _logService.ControllerLogAdd(log);
+
+                throw;
+            }
         }
 
         [HttpGet]
         public IActionResult ExamRemove(int id)
-        {
-            var examvalues = _examService.GetByID(id);
-            return View(examvalues);
+        {           
+
+            try
+            {
+                var examvalues = _examService.GetByID(id);
+                return View(examvalues);
+            }
+            catch (Exception ex)
+            {
+
+                ControllerLog log = new ControllerLog()
+                {
+                    ControllerName = "Exam",
+                    Message = ex.Message,
+                    MessageDate = DateTime.Now
+                };
+                _logService.ControllerLogAdd(log);
+
+                throw;
+            }
         }
 
         [HttpPost]
@@ -60,17 +155,66 @@ namespace AcmeProject.Controllers
         {
             try
             {
-                 
-                int issuccessExam = _examService.ExamDelete(exam.ID);
+                var questionExam = _questionService.GetOnAllQuestionExam(exam.ID, int.MaxValue, 1, out int totalCount);
+                List<int> questionIDs = new List<int>();
+                List<int> valueID = new List<int>();
+                foreach (var item in questionExam)
+                {
+                    questionIDs.Add(item.ID);
+
+                    var questionValue = _questionValueService.GetQuestionValue(item.ID);
+                    foreach (var item2 in questionValue)
+                    {
+                        valueID.Add(item2.ValueID);
+                    }
+                }
+
+                // int issuccessExam = _examService.ExamDelete(exam.ID);
+                if (questionIDs.Count > 0)
+                {
+                    _userQuestionValueService.UserQuestionValueDelete(questionIDs);
+                }
+                if (valueID.Count > 0)
+                {
+                    _valueService.ValueDelete(valueID);
+                }
+                if (questionIDs.Count > 0)
+                {
+                    _questionValueService.QuestionValueDelete(questionIDs);
+                }
                 
+                
+                _userExamService.UserExamDelete(new List<int>() { exam.ID });
+
+                if (questionIDs.Count > 0)
+                {
+                    _questionService.QuestionDelete(questionIDs);
+                }
+                if (questionIDs.Count > 0)
+                {
+                    _questionExamService.QuestionExamDelete(questionIDs);
+                }                
+                
+                _examService.ExamDelete(new List<int>() { exam.ID });
+
+                return RedirectToAction("Index");
+
             }
             catch (Exception ex)
             {
 
+                ControllerLog log = new ControllerLog()
+                {
+                    ControllerName = "Exam",
+                    Message = ex.Message,
+                    MessageDate = DateTime.Now
+                };
+                _logService.ControllerLogAdd(log);
+
                 throw;
             }
 
-            return RedirectToAction("Index");
+            
         }
     }
 }
